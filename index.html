@@ -349,31 +349,35 @@ h2.ht.w em{color:#a5b4fc;}
 .fact-sub{font-size:12px;color:var(--sub);margin-top:2px;line-height:1.4;}
 @media(max-width:900px){.about-layout{grid-template-columns:1fr;gap:40px;}.about-aside{position:static;}}
 .insights-panel{
-  margin-top:48px;
-  background:linear-gradient(135deg,#f0f4ff 0%,#fafbff 100%);
-  border:1px solid var(--bdr);border-radius:18px;padding:32px 36px;
+  margin-top:48px;border-radius:20px;
+  border:1px solid var(--bdr);overflow:hidden;background:var(--bg);
 }
-.insights-header{display:flex;align-items:center;gap:14px;margin-bottom:24px;}
-.insights-badge{
-  font-size:10px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;
-  color:#1a56a0;background:#e0ecff;border:1px solid #b8d4f8;
-  padding:5px 12px;border-radius:20px;flex-shrink:0;
+.insights-accent{height:4px;background:linear-gradient(90deg,#1a56a0 0%,var(--ind) 50%,var(--pur) 100%);}
+.insights-inner{padding:32px 36px;}
+.insights-top{
+  display:flex;align-items:flex-start;gap:18px;
+  margin-bottom:28px;padding-bottom:24px;border-bottom:1px solid var(--bdr);
 }
-.insights-heading{font-size:15px;font-weight:800;color:var(--tx);letter-spacing:-.2px;}
-.insights-sub{font-size:12px;color:var(--sub);margin-top:2px;}
-.insights-traits{
-  display:grid;grid-template-columns:1fr 1fr;gap:10px 32px;
+.insights-cert{
+  display:flex;flex-direction:column;align-items:center;gap:1px;
+  padding:10px 16px;background:linear-gradient(135deg,#1a56a0,var(--ind));
+  border-radius:12px;flex-shrink:0;
 }
-@media(max-width:640px){.insights-traits{grid-template-columns:1fr;}}
-.insights-trait{
-  display:flex;align-items:flex-start;gap:9px;
-  font-size:13.5px;color:var(--sub);line-height:1.55;
+.insights-cert-name{font-size:14px;font-weight:900;color:#fff;letter-spacing:-.3px;}
+.insights-cert-sub{font-size:9px;font-weight:600;color:rgba(255,255,255,.65);letter-spacing:1.5px;text-transform:uppercase;}
+.insights-heading{font-size:18px;font-weight:800;color:var(--tx);letter-spacing:-.3px;margin-bottom:5px;}
+.insights-sub{font-size:13px;color:var(--sub);line-height:1.5;}
+.insights-groups{display:flex;flex-direction:column;gap:20px;}
+.ig-lbl{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--ind);margin-bottom:10px;}
+.ig-chips{display:flex;flex-wrap:wrap;gap:8px;}
+.ig-chip{
+  font-size:13px;font-weight:500;color:var(--tx);
+  background:var(--bg3);border:1px solid var(--bdr);
+  border-radius:100px;padding:6px 16px;
+  transition:background .15s,border-color .15s,transform .15s;cursor:default;
 }
-.insights-trait::before{
-  content:"";flex-shrink:0;
-  width:6px;height:6px;border-radius:50%;
-  background:#1a56a0;margin-top:6px;
-}
+.ig-chip:hover{background:rgba(79,70,229,.08);border-color:rgba(79,70,229,.3);transform:translateY(-1px);}
+@media(max-width:640px){.insights-inner{padding:24px 20px;}.insights-top{flex-direction:column;gap:14px;}}
 
 /* ═══════════════════════════════════════════════════════
    TERMINAL IDENTITY SNAP
@@ -625,45 +629,58 @@ footer{
 @media(max-width:580px){footer{flex-direction:column;text-align:center;padding:28px 20px;}.fl{justify-content:center;}}
 
 /* ═══════════════════════════════════════════════════════
-   LINKEDIN POSTS
+   TESTIMONIALS / LINKEDIN
 ═══════════════════════════════════════════════════════ */
 .li-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:52px;}
 @media(max-width:960px){.li-grid{grid-template-columns:1fr 1fr;}}
 @media(max-width:620px){.li-grid{grid-template-columns:1fr;}}
 .li-card{
-  background:var(--bg);border:1px solid var(--bdr);border-radius:16px;padding:26px;
-  display:flex;flex-direction:column;gap:16px;
+  background:var(--bg);border:1px solid var(--bdr);border-radius:18px;
+  padding:32px 28px 24px;
+  display:flex;flex-direction:column;gap:0;
+  position:relative;overflow:hidden;
   transition:transform .2s,border-color .2s,box-shadow .2s;
 }
-.li-card:hover{transform:translateY(-3px);border-color:#c7d0f8;box-shadow:0 8px 32px rgba(79,70,229,.08);}
-.li-card.feat{border-color:rgba(79,70,229,.3);background:linear-gradient(140deg,rgba(79,70,229,.04) 0%,var(--bg) 60%);}
-.li-author{display:flex;align-items:center;gap:12px;}
+.li-card:hover{transform:translateY(-4px);border-color:#c7d0f8;box-shadow:0 12px 40px rgba(79,70,229,.1);}
+.li-card.feat{border-left:3px solid var(--ind);background:linear-gradient(140deg,rgba(79,70,229,.03) 0%,var(--bg) 70%);}
+.li-quote-mark{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:72px;line-height:.8;font-weight:900;
+  color:var(--ind);opacity:.12;
+  margin-bottom:8px;display:block;
+  user-select:none;
+}
+.li-card.feat .li-quote-mark{opacity:.2;}
+.li-text{
+  font-size:14px;color:var(--sub);line-height:1.8;
+  flex:1;margin-bottom:24px;
+}
+.li-text strong{color:var(--tx);font-weight:700;}
+.li-footer{
+  display:flex;align-items:center;gap:12px;
+  padding-top:18px;border-top:1px solid var(--bdr);
+}
 .li-avatar{
-  width:40px;height:40px;border-radius:50%;
-  background:var(--ind);color:#fff;
-  font-size:13px;font-weight:800;
+  width:38px;height:38px;border-radius:50%;
+  color:#fff;font-size:12px;font-weight:800;
   display:flex;align-items:center;justify-content:center;
   flex-shrink:0;letter-spacing:.5px;
+  background:var(--ind);
 }
 .li-avatar.green{background:var(--grn);}
 .li-avatar.purple{background:var(--pur);}
-.li-name{font-size:13.5px;font-weight:700;color:var(--tx);line-height:1.2;}
-.li-title{font-size:11.5px;color:var(--sub);margin-top:2px;}
+.li-avatar.blue{background:#0a66c2;}
+.li-name{font-size:13px;font-weight:700;color:var(--tx);line-height:1.3;}
+.li-title{font-size:11px;color:var(--sub);margin-top:1px;}
 .li-in-icon{
   margin-left:auto;flex-shrink:0;
-  width:28px;height:28px;border-radius:6px;
+  width:26px;height:26px;border-radius:5px;
   background:#0a66c2;display:flex;align-items:center;justify-content:center;
+  opacity:.85;transition:opacity .15s;
 }
-.li-in-icon svg{width:14px;height:14px;fill:#fff;}
-.li-excerpt{font-size:13px;color:var(--sub);line-height:1.75;flex:1;}
-.li-excerpt strong{color:var(--tx);}
-.li-meta{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:14px;border-top:1px solid var(--bdr);}
-.li-likes{font-size:12px;color:var(--mut);display:flex;align-items:center;gap:5px;}
-.li-link{
-  font-size:12px;font-weight:700;color:var(--ind);text-decoration:none;
-  display:flex;align-items:center;gap:4px;transition:gap .15s,color .15s;
-}
-.li-link:hover{gap:6px;color:var(--ind2);}
+.li-card:hover .li-in-icon{opacity:1;}
+.li-in-icon svg{width:13px;height:13px;fill:#fff;}
+.li-source{font-size:11px;color:var(--mut);margin-left:auto;margin-right:4px;}
 </style>
 </head>
 <body>
@@ -709,7 +726,6 @@ footer{
     <a href="#projects">Projects</a>
     <a href="#experience">Experience</a>
     <a href="#research">Research</a>
-    <a href="#linkedin">LinkedIn</a>
     <a href="#contact">Contact</a>
   </div>
   <div class="nav-right">
@@ -726,7 +742,7 @@ footer{
   <div class="hero-bg" aria-hidden="true"></div>
   <div class="hero-grid" aria-hidden="true"></div>
   <div class="hero-inner">
-    <img src="./photo.png" alt="Nihildev Nandakumar" class="avatar" width="148" height="148"/>
+    <img src="./photo.jpg" alt="Nihildev Nandakumar" class="avatar" width="148" height="148"/>
     <div class="avail-badge">
       <span class="avail-dot" aria-hidden="true"></span>
       Open to Senior &amp; Leadership Roles
@@ -838,24 +854,45 @@ footer{
 
     <!-- Insights Discovery panel -->
     <div class="insights-panel fi d2">
-      <div class="insights-header">
-        <span class="insights-badge">Insights Discovery</span>
-        <div>
-          <div class="insights-heading">Value to the Team</div>
-          <div class="insights-sub">Professional personality assessment · Insights Discovery®</div>
+      <div class="insights-accent"></div>
+      <div class="insights-inner">
+        <div class="insights-top">
+          <div class="insights-cert">
+            <span class="insights-cert-name">insights</span>
+            <span class="insights-cert-sub">Discovery®</span>
+          </div>
+          <div>
+            <div class="insights-heading">Value to the Team</div>
+            <div class="insights-sub">Professional personality profile — how Nihildev shows up at work</div>
+          </div>
         </div>
-      </div>
-      <div class="insights-traits">
-        <span class="insights-trait">Provides stimulation and resourcefulness</span>
-        <span class="insights-trait">Brings boundless energy to any situation</span>
-        <span class="insights-trait">Challenges existing methods if he feels they are inadequate</span>
-        <span class="insights-trait">Communicates clearly and effectively</span>
-        <span class="insights-trait">Initiates, justifies, actions and defends</span>
-        <span class="insights-trait">Is the life and soul of the group — often "centre stage"</span>
-        <span class="insights-trait">Knows nothing is impossible</span>
-        <span class="insights-trait">Will lead by fighting alongside the troops in the trenches</span>
-        <span class="insights-trait">Promotes ideas to, with and through others</span>
-        <span class="insights-trait">Can become a persuasive, inspirational leader</span>
+        <div class="insights-groups">
+          <div>
+            <div class="ig-lbl">Energy &amp; Character</div>
+            <div class="ig-chips">
+              <span class="ig-chip">Brings boundless energy to any situation</span>
+              <span class="ig-chip">Knows nothing is impossible</span>
+              <span class="ig-chip">Life and soul of the group</span>
+              <span class="ig-chip">Provides stimulation and resourcefulness</span>
+            </div>
+          </div>
+          <div>
+            <div class="ig-lbl">Leadership Style</div>
+            <div class="ig-chips">
+              <span class="ig-chip">Leads by fighting alongside the troops</span>
+              <span class="ig-chip">Persuasive, inspirational leader</span>
+              <span class="ig-chip">Promotes ideas to, with and through others</span>
+              <span class="ig-chip">Initiates, justifies, actions and defends</span>
+            </div>
+          </div>
+          <div>
+            <div class="ig-lbl">Work Style</div>
+            <div class="ig-chips">
+              <span class="ig-chip">Challenges methods he feels are inadequate</span>
+              <span class="ig-chip">Communicates clearly and effectively</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -1245,70 +1282,61 @@ footer{
 <!-- ── LINKEDIN POSTS ── -->
 <section class="sec s2" id="linkedin">
   <div class="inner fi">
-    <div class="ey">On LinkedIn</div>
-    <h2 class="ht">What people say,<br><em>and what I share</em></h2>
+    <div class="ey">Testimonials</div>
+    <h2 class="ht">What colleagues<br><em>and founders say</em></h2>
     <div class="li-grid fi d1">
 
       <!-- Featured: Founder post about workshop -->
       <div class="li-card feat">
-        <div class="li-author">
+        <span class="li-quote-mark">"</span>
+        <p class="li-text">
+          We kicked things off with a great workshop led by <strong>Nihildev Nandakumar</strong> on AI agents and automation. One key takeaway: the space is evolving fast, especially with no/low-code tools like n8n, which we started using right away… it sparked valuable discussions and laid the groundwork for long-term impact.
+        </p>
+        <div class="li-footer">
           <div class="li-avatar green">VD</div>
           <div>
             <div class="li-name">Valentin Degen</div>
             <div class="li-title">Founder · International Showtimes</div>
           </div>
-          <div class="li-in-icon">
+          <a class="li-in-icon" href="https://www.linkedin.com/feed/update/urn:li:share:7350472307481440258/" target="_blank" rel="noopener" aria-label="View on LinkedIn">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          </div>
-        </div>
-        <p class="li-excerpt">
-          "We kicked things off with a great workshop led by <strong>Nihildev Nandakumar</strong> on AI agents and automation. One key takeaway: the space is evolving fast, especially with no/low-code tools like n8n, which we started using right away… it sparked valuable discussions and laid the groundwork for long-term impact."
-        </p>
-        <div class="li-meta">
-          <span class="li-likes">👍 20 reactions · April 2025</span>
-          <a class="li-link" href="https://www.linkedin.com/feed/update/urn:li:share:7350472307481440258/" target="_blank" rel="noopener">View post ↗</a>
+          </a>
         </div>
       </div>
 
-      <!-- Fatih Temel comment: PLACED co-founder endorsement -->
+      <!-- Fatih Temel: PLACED co-founder endorsement -->
       <div class="li-card">
-        <div class="li-author">
-          <div class="li-avatar" style="background:#0a66c2;">FT</div>
+        <span class="li-quote-mark">"</span>
+        <p class="li-text">
+          You are an <strong>incredible developer</strong> and your family can be extremely proud of you! Let's transform this industry together and bring candidate placement into the era of AI!
+        </p>
+        <div class="li-footer">
+          <div class="li-avatar blue">FT</div>
           <div>
             <div class="li-name">Fatih Temel</div>
             <div class="li-title">Co-Founder · PLACED</div>
           </div>
-          <div class="li-in-icon">
+          <a class="li-in-icon" href="https://www.linkedin.com/posts/nihildev_placed-%F0%9D%97%82%F0%9D%97%8C%F0%9D%97%8D-%F0%9D%96%BD%F0%9D%97%82%F0%9D%96%BE-%F0%9D%96%BE%F0%9D%97%8B%F0%9D%97%8C%F0%9D%97%8D%F0%9D%96%BE-%F0%9D%96%AA%F0%9D%96%A8-%F0%9D%96%B5%F0%9D%96%BE-activity-7343584098227040256-h5Ut" target="_blank" rel="noopener" aria-label="View on LinkedIn">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          </div>
-        </div>
-        <p class="li-excerpt">
-          "You are an <strong>incredible developer</strong> and your family can be extremely proud of you! Let's transform this industry together and bring candidate placement into the era of AI!"
-        </p>
-        <div class="li-meta">
-          <span class="li-likes">❤️ 1 · Comment on PLACED launch</span>
-          <a class="li-link" href="https://www.linkedin.com/posts/nihildev_placed-%F0%9D%97%82%F0%9D%97%8C%F0%9D%97%8D-%F0%9D%96%BD%F0%9D%97%82%F0%9D%96%BE-%F0%9D%96%BE%F0%9D%97%8B%F0%9D%97%8C%F0%9D%97%8D%F0%9D%96%BE-%F0%9D%96%AA%F0%9D%96%A8-%F0%9D%96%B5%F0%9D%96%BE-activity-7343584098227040256-h5Ut" target="_blank" rel="noopener">View post ↗</a>
+          </a>
         </div>
       </div>
 
-      <!-- Magaly's post: Infineon dashboard -->
+      <!-- Magaly Thierry: Infineon dashboard -->
       <div class="li-card">
-        <div class="li-author">
+        <span class="li-quote-mark">"</span>
+        <p class="li-text">
+          The <strong>oneSAP Training Dashboard</strong> built with <strong>Nihildev</strong> tracks the complete training process — invitations, registrations, KPI analysis for go-live decisions, trainer feedback. Automated daily updates. Supports multiple simultaneous rollouts across Infineon's global digitalization strategy.
+        </p>
+        <div class="li-footer">
           <div class="li-avatar purple">MT</div>
           <div>
             <div class="li-name">Magaly Thierry</div>
             <div class="li-title">Project Lead · Infineon Technologies</div>
           </div>
-          <div class="li-in-icon">
+          <a class="li-in-icon" href="https://www.linkedin.com/feed/update/urn:li:share:6953269270067740672/" target="_blank" rel="noopener" aria-label="View on LinkedIn">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          </div>
-        </div>
-        <p class="li-excerpt">
-          "The <strong>oneSAP Training Dashboard</strong> built with <strong>Nihildev Nandakumar</strong> tracks the complete training process — invitations, registrations, completions, KPI analysis for go-live decisions, and trainer feedback. Automated daily updates. Supports multiple simultaneous rollouts across Infineon's global digitalization strategy."
-        </p>
-        <div class="li-meta">
-          <span class="li-likes">👍 41 reactions · 5 comments</span>
-          <a class="li-link" href="https://www.linkedin.com/feed/update/urn:li:share:6953269270067740672/" target="_blank" rel="noopener">View post ↗</a>
+          </a>
         </div>
       </div>
 
@@ -1321,9 +1349,9 @@ footer{
   <div class="contact-grid" aria-hidden="true"></div>
   <div class="contact-inner fi">
     <div class="ey w">Let's talk</div>
-    <h2>Ready to build something<br><em>remarkable together?</em></h2>
+    <h2>The right hire<br><em>is one message away</em></h2>
     <p class="lead w" style="margin:0 auto 48px;">
-      I'm open to senior engineering and AI leadership roles. If you're building something ambitious in AI, data platforms, or full-stack ML — I'd love to hear about it.
+      Senior AI engineering &amp; leadership roles. If you're building something ambitious in AI, data platforms, or full-stack ML — I'll make it ship.
     </p>
     <div class="contact-btns">
       <a class="cb-p" href="mailto:nihildev.nandakumar@gmail.com" aria-label="Email Nihildev">
