@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>DataMCP — AI Data Engineer · Nihildev Nandakumar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:    #fafbff;
+  --bg2:   #f3f4fd;
+  --bg3:   #eaecfb;
+  --bg4:   #dde0f8;
+  --text:  #0f1020;
+  --sub:   #5b607a;
+  --orange:#4f46e5;
+  --oran2: #4338ca;
+  --border:#d0d4f0;
+  --green: #059669;
+  --purple:#7c3aed;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Inter",-apple-system,BlinkMacSystemFont,sans-serif;
+     background:var(--bg);color:var(--text);font-size:15px;line-height:1.6}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:200;
+    background:rgba(250,251,255,0.97);backdrop-filter:blur(16px);
+    border-bottom:1px solid var(--border);
+    display:flex;align-items:center;justify-content:space-between;
+    padding:0 48px;height:58px;}
+.nav-brand{font-size:14px;font-weight:800;letter-spacing:-0.3px;
+           display:flex;align-items:center;gap:8px;color:var(--text);}
+.nav-brand em{color:var(--orange);font-style:normal;}
+.nav-links{display:flex;gap:28px;}
+.nav-links a{font-size:13px;color:var(--sub);text-decoration:none;transition:color .15s;font-weight:500;}
+.nav-links a:hover{color:var(--text);}
+.nav-cta{background:var(--orange);color:#fff;font-size:13px;font-weight:700;
+         padding:8px 20px;border-radius:8px;text-decoration:none;transition:background .15s;}
+.nav-cta:hover{background:var(--oran2);}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;
+      justify-content:center;align-items:center;text-align:center;
+      padding:80px 40px 60px;
+      background:linear-gradient(160deg,#eef0fd 0%,#fafbff 50%,#edf0fd 100%);
+      position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse at 70% 15%,rgba(79,70,229,.10) 0%,transparent 50%),
+             radial-gradient(ellipse at 20% 85%,rgba(79,70,229,.05) 0%,transparent 45%);}
+.hero-glow{position:absolute;bottom:0;left:0;right:0;height:2px;
+           background:linear-gradient(90deg,transparent,var(--orange) 35%,var(--oran2) 65%,transparent);}
+.hero-inner{position:relative;max-width:900px;margin:0 auto;}
+.hero-chip{display:inline-flex;align-items:center;gap:8px;
+           background:rgba(79,70,229,0.1);border:1px solid rgba(79,70,229,0.3);
+           color:var(--oran2);font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;
+           padding:7px 18px;border-radius:40px;margin-bottom:28px;}
+.live-dot{width:7px;height:7px;background:var(--orange);border-radius:50%;animation:pulse 1.5s infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.hero h1{font-size:clamp(38px,6vw,74px);font-weight:900;line-height:1.04;
+         letter-spacing:-2.5px;margin-bottom:22px;color:var(--text);}
+.hero h1 em{color:var(--orange);font-style:normal;}
+.hero-desc{font-size:18px;color:var(--sub);max-width:640px;margin:0 auto 44px;line-height:1.8;}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);
+            gap:1px;background:var(--border);
+            border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:40px;}
+.hs{background:var(--bg3);padding:26px 16px;text-align:center;}
+.hs-n{font-size:40px;font-weight:900;letter-spacing:-2px;color:var(--orange);line-height:1;}
+.hs-l{font-size:11.5px;color:var(--sub);margin-top:7px;line-height:1.4;}
+.hero-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-bottom:40px;}
+.pill{display:inline-flex;align-items:center;gap:6px;
+      background:var(--bg3);border:1px solid var(--border);
+      font-size:12.5px;color:var(--sub);padding:6px 14px;border-radius:40px;font-weight:500;}
+.hero-btn{display:inline-flex;align-items:center;gap:8px;
+          background:var(--orange);color:#fff;padding:15px 34px;border-radius:10px;
+          font-size:15px;font-weight:700;text-decoration:none;
+          box-shadow:0 8px 32px rgba(79,70,229,0.4);transition:transform .15s,background .15s;}
+.hero-btn:hover{transform:translateY(-2px);background:var(--oran2);}
+@media(max-width:640px){.hero-stats{grid-template-columns:repeat(2,1fr)}}
+
+/* SECTIONS */
+.sec{padding:96px 48px;}
+.sec.s1{background:var(--bg);}
+.sec.s2{background:var(--bg2);}
+.sec.s3{background:var(--bg3);}
+.inner{max-width:1100px;margin:0 auto;}
+.ey{font-size:10.5px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--orange);margin-bottom:10px;}
+h2.hl{font-size:clamp(28px,3.5vw,46px);font-weight:900;letter-spacing:-1px;margin-bottom:18px;line-height:1.1;color:var(--text);}
+h2.hl em{color:var(--orange);font-style:normal;}
+.lead{font-size:17px;color:var(--sub);max-width:640px;line-height:1.75;}
+
+/* PROBLEM */
+.prob-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px;}
+.prob-card{background:var(--bg3);border:1px solid var(--border);border-radius:14px;padding:28px 24px;}
+.prob-n{font-size:42px;font-weight:900;color:rgba(79,70,229,0.1);letter-spacing:-1px;margin-bottom:12px;}
+.prob-t{font-size:15px;font-weight:700;margin-bottom:8px;color:var(--text);}
+.prob-d{font-size:13.5px;color:var(--sub);line-height:1.65;}
+@media(max-width:720px){.prob-grid{grid-template-columns:1fr}}
+
+/* TERMINAL */
+.term-wrap{margin-top:52px;border-radius:14px;overflow:hidden;
+           border:1px solid var(--border);box-shadow:0 32px 80px rgba(15,16,32,0.16);}
+.term-bar{background:#1a1b2e;padding:14px 20px;display:flex;align-items:center;gap:8px;}
+.term-dot{width:12px;height:12px;border-radius:50%;}
+.term-dot.r{background:#ff5f57;}.term-dot.y{background:#febc2e;}.term-dot.g{background:#28c840;}
+.term-title{margin-left:auto;margin-right:auto;font-size:12px;
+            color:#5b607a;font-family:"JetBrains Mono",monospace;}
+.term-body{background:#0d0e1a;padding:28px 28px 32px;font-family:"JetBrains Mono",monospace;font-size:13px;line-height:1.9;}
+.t-prompt{color:#7c7cf0;}
+.t-cmd{color:#e0e3ff;}
+.t-out{color:#a8b5d8;}
+.t-tool{color:#34d399;font-style:italic;}
+.t-val{color:#fbbf24;}
+.t-comment{color:#4b5268;}
+.t-br{display:block;height:8px;}
+
+/* FEATURE ROWS */
+.feat{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;margin-top:56px;}
+.feat.rev{direction:rtl;}
+.feat.rev > *{direction:ltr;}
+.feat-copy .ftag{display:inline-block;
+  background:rgba(79,70,229,0.1);border:1px solid rgba(79,70,229,0.3);
+  color:var(--oran2);font-size:10.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  padding:4px 12px;border-radius:20px;margin-bottom:16px;}
+.feat-copy h3{font-size:clamp(22px,2.5vw,30px);font-weight:800;
+              letter-spacing:-0.5px;margin-bottom:14px;line-height:1.2;color:var(--text);}
+.feat-copy p{font-size:14px;color:var(--sub);line-height:1.8;margin-bottom:20px;}
+.feat-list{list-style:none;}
+.feat-list li{padding:6px 0 6px 22px;position:relative;font-size:13.5px;color:var(--text);}
+.feat-list li::before{content:"✓";position:absolute;left:0;color:var(--orange);font-weight:700;font-size:12px;}
+
+/* STONE PANEL */
+.stone-panel{background:var(--bg3);border:1px solid var(--border);border-radius:14px;
+             padding:28px;display:flex;flex-direction:column;gap:0;}
+.stone-badge{display:inline-flex;align-items:center;gap:8px;
+             background:rgba(79,70,229,0.1);border:1px solid rgba(79,70,229,0.3);
+             color:var(--oran2);font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+             padding:4px 12px;border-radius:20px;margin-bottom:16px;width:fit-content;}
+.stone-panel h4{font-size:17px;font-weight:800;margin-bottom:10px;color:var(--text);}
+.stone-panel p{font-size:13px;color:var(--sub);line-height:1.7;margin-bottom:14px;}
+.stone-tools{display:flex;flex-wrap:wrap;gap:6px;}
+.st{font-size:11px;font-family:"JetBrains Mono",monospace;font-weight:500;
+    padding:3px 9px;border-radius:5px;
+    background:rgba(79,70,229,0.08);color:var(--oran2);border:1px solid rgba(79,70,229,0.2);}
+
+@media(max-width:860px){.feat,.feat.rev{grid-template-columns:1fr;direction:ltr;gap:32px;}}
+
+/* METRICS */
+.metrics{display:flex;gap:0;margin-top:48px;border:1px solid var(--border);border-radius:14px;overflow:hidden;}
+.metric{flex:1;padding:28px 20px;text-align:center;border-right:1px solid var(--border);background:var(--bg3);}
+.metric:last-child{border-right:none;}
+.metric-n{font-size:38px;font-weight:900;letter-spacing:-1.5px;color:var(--orange);line-height:1;}
+.metric-l{font-size:12px;color:var(--sub);margin-top:7px;line-height:1.4;}
+@media(max-width:600px){.metrics{flex-wrap:wrap;}.metric{flex:0 0 50%;border-right:none;border-bottom:1px solid var(--border);}}
+
+/* TOOLS GRID */
+.tools-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:48px;}
+.tool-card{background:var(--bg3);border:1px solid var(--border);border-radius:12px;
+           padding:20px 22px;transition:background .2s,transform .2s;}
+.tool-card:hover{background:var(--bg4);transform:translateY(-2px);}
+.tool-cat{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+          color:var(--orange);margin-bottom:6px;}
+.tool-name{font-size:13px;font-weight:700;font-family:"JetBrains Mono",monospace;
+           color:var(--text);margin-bottom:6px;}
+.tool-desc{font-size:12.5px;color:var(--sub);line-height:1.55;}
+@media(max-width:720px){.tools-grid{grid-template-columns:1fr;}}
+
+/* ARCH */
+.arch{display:flex;flex-direction:column;gap:10px;margin-top:48px;}
+.arch-row{display:grid;gap:10px;}
+.ar1{grid-template-columns:1fr;}
+.ar2{grid-template-columns:1fr 1fr;}
+.ar3{grid-template-columns:1fr 1fr 1fr;}
+.ab{background:#fff;border:1px solid var(--border);border-radius:12px;padding:20px 24px;box-shadow:0 2px 12px rgba(15,16,32,0.06);}
+.ab.t{border-color:rgba(79,70,229,0.35);background:rgba(79,70,229,0.04);}
+.ab.b{background:var(--bg3);}
+.ab-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--orange);margin-bottom:5px;}
+.ab-title{font-size:14px;font-weight:700;margin-bottom:4px;color:var(--text);}
+.ab-desc{font-size:12.5px;color:var(--sub);line-height:1.5;}
+.arch-arrow{text-align:center;color:var(--sub);font-size:18px;margin:-2px 0;letter-spacing:4px;}
+@media(max-width:720px){.ar2,.ar3{grid-template-columns:1fr;}}
+
+/* CAPABILITIES */
+.cap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px;}
+.cap{background:var(--bg3);border:1px solid var(--border);border-radius:14px;
+     padding:26px;display:flex;flex-direction:column;transition:background .2s,transform .2s;}
+.cap:hover{background:var(--bg4);transform:translateY(-2px);}
+.cap-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;
+          justify-content:center;font-size:20px;margin-bottom:14px;background:rgba(79,70,229,0.1);}
+.cap-t{font-size:15px;font-weight:800;color:var(--text);margin-bottom:4px;}
+.cap-sub{font-size:11.5px;color:var(--orange);margin-bottom:10px;font-weight:600;}
+.cap-d{font-size:13px;color:var(--sub);line-height:1.65;flex:1;}
+.cap-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px;}
+.ct{font-size:11px;font-weight:600;padding:3px 9px;border-radius:5px;
+    background:rgba(79,70,229,0.1);color:var(--oran2);border:1px solid rgba(79,70,229,0.25);}
+.ct.g{background:rgba(5,150,105,0.08);color:#059669;border-color:rgba(5,150,105,0.2);}
+.ct.p{background:rgba(124,58,237,0.08);color:#7c3aed;border-color:rgba(124,58,237,0.2);}
+.ct.s{background:var(--bg2);color:var(--sub);border-color:var(--border);}
+@media(max-width:720px){.cap-grid{grid-template-columns:1fr;}}
+
+/* PIPELINE STEPS */
+.pipeline{display:grid;grid-template-columns:repeat(5,1fr);
+          gap:1px;background:var(--border);
+          border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-top:48px;}
+.ps{background:var(--bg3);padding:24px 18px;}
+.ps-n{font-size:30px;font-weight:900;color:rgba(79,70,229,0.18);letter-spacing:-1px;margin-bottom:8px;}
+.ps-t{font-size:13px;font-weight:700;margin-bottom:5px;color:var(--text);}
+.ps-d{font-size:11.5px;color:var(--sub);line-height:1.5;}
+@media(max-width:820px){.pipeline{grid-template-columns:1fr 1fr;}}
+@media(max-width:480px){.pipeline{grid-template-columns:1fr;}}
+
+/* TECH */
+.tech-groups{display:flex;flex-direction:column;gap:28px;margin-top:48px;}
+.tg-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--sub);margin-bottom:10px;}
+.tg-row{display:flex;flex-wrap:wrap;gap:8px;}
+.tb{display:inline-flex;align-items:center;gap:6px;
+    background:var(--bg3);border:1px solid var(--border);
+    color:var(--text);font-size:13px;font-weight:500;padding:7px 14px;border-radius:8px;}
+
+/* ROADMAP */
+.road-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px;}
+.road-card{background:var(--bg3);border:1px solid var(--border);border-radius:14px;padding:24px;}
+.road-stone{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+            color:var(--orange);margin-bottom:8px;}
+.road-t{font-size:15px;font-weight:700;margin-bottom:8px;color:var(--text);}
+.road-d{font-size:13px;color:var(--sub);line-height:1.65;}
+.road-card.done{border-color:rgba(5,150,105,0.3);background:rgba(5,150,105,0.04);}
+.road-card.done .road-stone{color:var(--green);}
+.road-card.coming{opacity:.7;}
+.road-tag{display:inline-block;margin-top:12px;font-size:11px;font-weight:700;
+          padding:3px 10px;border-radius:20px;}
+.road-tag.d{background:rgba(5,150,105,0.1);color:var(--green);border:1px solid rgba(5,150,105,0.25);}
+.road-tag.c{background:rgba(79,70,229,0.1);color:var(--oran2);border:1px solid rgba(79,70,229,0.25);}
+@media(max-width:720px){.road-grid{grid-template-columns:1fr;}}
+
+/* CTA */
+.cta-sec{text-align:center;padding:100px 40px;background:#0f1020;position:relative;overflow:hidden;}
+.cta-sec::before{content:"";position:absolute;inset:0;
+  background:radial-gradient(ellipse at 50% 110%,rgba(79,70,229,.12) 0%,transparent 55%);}
+.cta-inner{position:relative;max-width:660px;margin:0 auto;}
+.cta-sec h2{font-size:clamp(28px,4vw,48px);font-weight:900;letter-spacing:-1px;margin-bottom:16px;color:#f0f5ff;}
+.cta-sec p{font-size:16px;color:#a8b5d8;margin-bottom:40px;line-height:1.8;}
+.cta-btn{display:inline-flex;align-items:center;gap:10px;
+         background:var(--orange);color:#fff;padding:16px 36px;border-radius:10px;
+         font-size:15px;font-weight:700;text-decoration:none;
+         box-shadow:0 8px 30px rgba(79,70,229,0.4);transition:transform .15s,background .15s;}
+.cta-btn:hover{transform:translateY(-2px);background:var(--oran2);}
+.cta-note{font-size:13px;color:#5b607a;margin-top:18px;}
+
+/* FOOTER */
+footer{background:var(--bg2);border-top:1px solid var(--border);
+       text-align:center;padding:28px;font-size:12.5px;color:var(--sub);}
+footer strong{color:var(--text);}
+
+code{font-family:"JetBrains Mono",monospace;font-size:.88em;
+     background:rgba(79,70,229,0.1);color:var(--oran2);padding:1px 6px;border-radius:4px;}
+
+@media print{nav{display:none}.sec{padding:60px 24px}.hero{min-height:auto;padding:60px 24px}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">⚡ <em>DataMCP</em> — AI Data Engineer</div>
+  <div class="nav-links">
+    <a href="#problem">Problem</a>
+    <a href="#demo">Demo</a>
+    <a href="#capabilities">Capabilities</a>
+    <a href="#tools">Tools</a>
+    <a href="#arch">Architecture</a>
+    <a href="#roadmap">Roadmap</a>
+  </div>
+  <a class="nav-cta" href="#contact">Request Repo Access</a>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-chip"><span class="live-dot"></span> 6 Capability Layers · 20 MCP Tools · 232 Tests · Portfolio Project</div>
+    <h1>Your <em>AI Data Engineer</em><br>lives in your editor</h1>
+    <p class="hero-desc">
+      Describe your analytics needs in plain English. DataMCP connects to your Postgres database,
+      maps the schema, generates a production-quality dbt project, wires up dashboards,
+      schedules orchestration, and streams real-time data — all without leaving your coding assistant.
+    </p>
+
+    <div class="hero-stats">
+      <div class="hs"><div class="hs-n">20</div><div class="hs-l">MCP tools<br>across 6 layers</div></div>
+      <div class="hs"><div class="hs-n">&lt;15m</div><div class="hs-l">From DB connection<br>to runnable dbt project</div></div>
+      <div class="hs"><div class="hs-n">0</div><div class="hs-l">SQL written<br>by hand</div></div>
+      <div class="hs"><div class="hs-n">∞</div><div class="hs-l">Knowledge base<br>that compounds</div></div>
+    </div>
+
+    <div class="hero-pills">
+      <span class="pill">🐍 Python · FastAPI · uv</span>
+      <span class="pill">🔧 dbt · dlt · Dagster</span>
+      <span class="pill">📊 Metabase · Postgres</span>
+      <span class="pill">⚡ Kafka · Debezium</span>
+      <span class="pill">🧠 SQLite Knowledge Base</span>
+      <span class="pill">🔐 OS Keychain Auth</span>
+    </div>
+
+    <a class="hero-btn" href="#contact">✉ Request Repository Access</a>
+  </div>
+  <div class="hero-glow"></div>
+</section>
+
+<!-- ── PROBLEM ── -->
+<section class="sec s2" id="problem">
+  <div class="inner">
+    <div class="ey">The Problem</div>
+    <h2 class="hl">Analytics is a <em>wiring problem</em><br>disguised as a staffing problem</h2>
+    <p class="lead">The tools all exist. dbt, Dagster, Metabase, Kafka — the ecosystem is mature. The problem is the assembly cost: a skilled data engineer needs one to three weeks just to wire everything together for the first time. Then another week whenever the schema changes.</p>
+    <div class="prob-grid">
+      <div class="prob-card">
+        <div class="prob-n">01</div>
+        <div class="prob-t">Schema chaos, no documentation</div>
+        <div class="prob-d">Every team has a production database nobody has fully mapped. Foreign keys undocumented. Column names ambiguous. Business logic buried in application code. A data engineer starts from zero every time.</div>
+      </div>
+      <div class="prob-card">
+        <div class="prob-n">02</div>
+        <div class="prob-t">Weeks of scaffolding toil</div>
+        <div class="prob-d">Staging models, sources, marts, tests, KPI definitions, scheduler configs, dashboard connections — all written by hand, each requiring deep expertise in tools the rest of the team doesn't know.</div>
+      </div>
+      <div class="prob-card">
+        <div class="prob-n">03</div>
+        <div class="prob-t">Maintenance is a full-time job</div>
+        <div class="prob-d">Schema drifts silently. Dashboards break. Pipeline tests fail with cryptic messages. Without a dedicated data engineer monitoring things, the analytics layer rots faster than the product evolves.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── DEMO / TERMINAL ── -->
+<section class="sec s1" id="demo">
+  <div class="inner">
+    <div class="ey">How It Works</div>
+    <h2 class="hl">Describe it once.<br><em>DataMCP builds the rest.</em></h2>
+    <p class="lead">DataMCP runs as an MCP server inside Claude Code, Cursor, or Codex. The developer stays in their editor. Every tool call is logged to a local knowledge base that makes every subsequent interaction smarter.</p>
+
+    <div class="term-wrap">
+      <div class="term-bar">
+        <div class="term-dot r"></div><div class="term-dot y"></div><div class="term-dot g"></div>
+        <div class="term-title">Claude Code — DataMCP Session</div>
+      </div>
+      <div class="term-body">
+        <span class="t-prompt">user › </span><span class="t-cmd">Connect to our production Postgres and set up analytics</span>
+        <span class="t-br"></span>
+        <span class="t-tool">⟶ connect_database</span><span class="t-out">(host="db.prod.internal", db="appdb", schema="public")</span>
+        <span class="t-out">  Connected. Found 24 tables, 187 columns, 9 detected foreign key relationships.</span>
+        <span class="t-br"></span>
+        <span class="t-tool">⟶ introspect_schema</span><span class="t-out">()</span>
+        <span class="t-out">  Schema graph built. Tables mapped with types, nullability, PKs, FKs, row counts.</span>
+        <span class="t-br"></span>
+        <span class="t-tool">⟶ infer_domain</span><span class="t-out">()</span>
+        <span class="t-out">  Domain: </span><span class="t-val">SaaS / Subscription platform</span><span class="t-out">. Confidence: 94%</span>
+        <span class="t-out">  Signals: users, subscriptions, plans, invoices, events tables detected.</span>
+        <span class="t-br"></span>
+        <span class="t-tool">⟶ infer_model_candidates</span><span class="t-out">()</span>
+        <span class="t-out">  Recommended: 24 staging models · 6 intermediate joins · 4 fact tables · 3 dimensions</span>
+        <span class="t-br"></span>
+        <span class="t-tool">⟶ generate_staging_models</span><span class="t-out">()</span>
+        <span class="t-out">  Generated 24 staging models with column renaming, casting, not_null + unique tests.</span>
+        <span class="t-br"></span>
+        <span class="t-tool">⟶ generate_mart_models</span><span class="t-out">()</span>
+        <span class="t-out">  Generated fct_subscriptions, fct_invoices, dim_users, dim_plans — schema.yml included.</span>
+        <span class="t-br"></span>
+        <span class="t-tool">⟶ generate_kpis</span><span class="t-out">()</span>
+        <span class="t-out">  Defined 12 KPIs: MRR, Churn Rate, ARPU, Trial-to-Paid, DAU/MAU, NRR…</span>
+        <span class="t-br"></span>
+        <span class="t-tool">⟶ run_dbt</span><span class="t-out">(command="run")</span>
+        <span class="t-out">  ✓ 37 models completed. 0 errors. 0 warnings.</span>
+        <span class="t-br"></span>
+        <span class="t-out t-comment">  Total time: 11 minutes 42 seconds. Zero SQL written by hand.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PIPELINE ── -->
+<section class="sec s2">
+  <div class="inner">
+    <div class="ey">The Pipeline</div>
+    <h2 class="hl">Five stages. <em>Fully automated.</em></h2>
+    <p class="lead">Every DataMCP session follows the same reproducible flow — from raw Postgres to analytics-ready marts, with tests, documentation, and monitoring at each stage.</p>
+    <div class="pipeline">
+      <div class="ps">
+        <div class="ps-n">01</div>
+        <div class="ps-t">Connect & Introspect</div>
+        <div class="ps-d">Postgres connection established. Full schema graph built — tables, columns, types, PKs, FKs, row counts, indexes.</div>
+      </div>
+      <div class="ps">
+        <div class="ps-n">02</div>
+        <div class="ps-t">Infer Domain</div>
+        <div class="ps-d">Schema patterns analysed. Business domain classified. Model candidates ranked. Developer confirms before generation.</div>
+      </div>
+      <div class="ps">
+        <div class="ps-n">03</div>
+        <div class="ps-t">Generate dbt Project</div>
+        <div class="ps-d">Staging models, marts, tests, sources, KPIs — all generated from Jinja templates. Committed to the repo.</div>
+      </div>
+      <div class="ps">
+        <div class="ps-n">04</div>
+        <div class="ps-t">Execute & Validate</div>
+        <div class="ps-d">dbt run and dbt test executed. Failures surfaced with plain-English explanations and fix suggestions.</div>
+      </div>
+      <div class="ps">
+        <div class="ps-n">05</div>
+        <div class="ps-t">Monitor & Alert</div>
+        <div class="ps-d">Freshness SLA tracking per table. Consumer lag for streaming. Dagster pipeline health. All in the knowledge base.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CAPABILITIES ── -->
+<section class="sec s1" id="capabilities">
+  <div class="inner">
+    <div class="ey">Six Capability Layers</div>
+    <h2 class="hl">One server.<br><em>The entire data stack.</em></h2>
+    <p class="lead">Each stone adds a complete layer of functionality — independently useful, but designed to compose. A team can adopt Stone 1 today and unlock the full stack as they grow.</p>
+    <div class="cap-grid">
+
+      <div class="cap">
+        <div class="cap-icon">🗄️</div>
+        <div class="cap-t">Stone 1 — Core Analytics</div>
+        <div class="cap-sub">Postgres → dbt · Production Complete</div>
+        <div class="cap-d">Connect to any Postgres instance, map the full schema, infer the business domain, generate a complete dbt project with staging models, mart layer, KPI definitions, and data quality tests — all in under 15 minutes.</div>
+        <div class="cap-tags">
+          <span class="ct g">Live</span>
+          <span class="ct">dbt</span>
+          <span class="ct">Postgres</span>
+          <span class="ct p">Jinja</span>
+        </div>
+      </div>
+
+      <div class="cap">
+        <div class="cap-icon">📊</div>
+        <div class="cap-t">Stone 2 — BI Dashboards</div>
+        <div class="cap-sub">dbt → Metabase · Production Complete</div>
+        <div class="cap-d">Automatically connect the mart layer to Metabase — provision the database connection, sync table metadata, scaffold dashboards from KPI definitions, and propagate schema changes without manual intervention.</div>
+        <div class="cap-tags">
+          <span class="ct g">Live</span>
+          <span class="ct">Metabase</span>
+          <span class="ct p">REST API</span>
+          <span class="ct">Auto-sync</span>
+        </div>
+      </div>
+
+      <div class="cap">
+        <div class="cap-icon">⏱️</div>
+        <div class="cap-t">Stone 3 — Orchestration</div>
+        <div class="cap-sub">Dagster Runtime · Production Complete</div>
+        <div class="cap-d">Scaffold and manage a live Dagster project — start and stop the runtime, poll pipeline state via GraphQL, enforce freshness SLA sensors, and surface run history and failures through the knowledge base.</div>
+        <div class="cap-tags">
+          <span class="ct g">Live</span>
+          <span class="ct">Dagster</span>
+          <span class="ct">GraphQL</span>
+          <span class="ct p">SLA Sensors</span>
+        </div>
+      </div>
+
+      <div class="cap">
+        <div class="cap-icon">🔌</div>
+        <div class="cap-t">Stone 4 — Ingestion</div>
+        <div class="cap-sub">dlt Pipelines · Production Complete</div>
+        <div class="cap-d">Generate and execute dlt pipelines to ingest data from external sources. Detect source-to-staging drift automatically. Surface last run status, row counts, and alignment issues directly from the MCP.</div>
+        <div class="cap-tags">
+          <span class="ct g">Live</span>
+          <span class="ct">dlt</span>
+          <span class="ct">Drift Detection</span>
+          <span class="ct p">Multi-source</span>
+        </div>
+      </div>
+
+      <div class="cap">
+        <div class="cap-icon">⚡</div>
+        <div class="cap-t">Stone 5 — Streaming</div>
+        <div class="cap-sub">Kafka · Production Complete</div>
+        <div class="cap-d">Provision Kafka topics, generate Postgres sink connector config (Debezium / JDBC), monitor consumer lag per partition, and generate streaming-aware incremental dbt models — with real-time freshness tracking.</div>
+        <div class="cap-tags">
+          <span class="ct g">Live</span>
+          <span class="ct">Kafka</span>
+          <span class="ct">Debezium</span>
+          <span class="ct p">Incremental dbt</span>
+        </div>
+      </div>
+
+      <div class="cap">
+        <div class="cap-icon">💬</div>
+        <div class="cap-t">Stone 6 — Chat GUI</div>
+        <div class="cap-sub">Non-developer Interface · In Progress</div>
+        <div class="cap-d">A Streamlit-based chat interface backed by the full knowledge base — schema graph, KPIs, freshness history, pipeline logs, Metabase chart metadata. RAG-powered answers grounded in the team's specific data model.</div>
+        <div class="cap-tags">
+          <span class="ct s">Partial</span>
+          <span class="ct">Streamlit</span>
+          <span class="ct p">RAG</span>
+          <span class="ct">SQLite KB</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── FEATURE: KNOWLEDGE BASE ── -->
+<section class="sec s2">
+  <div class="inner">
+    <div class="ey">The Differentiator</div>
+    <h2 class="hl">A knowledge base that<br><em>compounds every week</em></h2>
+
+    <div class="feat">
+      <div class="feat-copy">
+        <div class="ftag">Persistent Context</div>
+        <h3>The longer you use it,<br>the smarter it gets</h3>
+        <p>Every DataMCP action is stored in a local SQLite knowledge base — schema snapshots, model generations, KPI definitions, pipeline run history, query logs, Metabase chart metadata, Kafka connection configs. This is the context that makes every subsequent interaction faster and more specific.</p>
+        <ul class="feat-list">
+          <li>Schema evolution tracked across every introspection run</li>
+          <li>Model generation history with before/after diffs</li>
+          <li>KPI definitions versioned alongside mart models</li>
+          <li>Pipeline run log with row counts and failure context</li>
+          <li>Natural language query history for RAG retrieval</li>
+          <li>Freshness SLA violations logged with timestamps</li>
+        </ul>
+      </div>
+      <div>
+        <div class="stone-panel">
+          <div class="stone-badge">Knowledge Base Schema</div>
+          <h4>SQLite — 12 Tables</h4>
+          <p>Persisted locally in the project directory. Grows with the project. Never leaves the team's environment.</p>
+          <div class="stone-tools">
+            <span class="st">connections</span>
+            <span class="st">schemas</span>
+            <span class="st">tables</span>
+            <span class="st">generated_models</span>
+            <span class="st">kpi_definitions</span>
+            <span class="st">pipeline_runs</span>
+            <span class="st">query_history</span>
+            <span class="st">freshness_checks</span>
+            <span class="st">metabase_connections</span>
+            <span class="st">metabase_charts</span>
+            <span class="st">kafka_connections</span>
+            <span class="st">dlt_runs</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- second feature row -->
+    <div class="feat rev" style="margin-top:64px;">
+      <div class="feat-copy">
+        <div class="ftag">Generated Code Quality</div>
+        <h3>Code a senior data engineer<br>would be proud of</h3>
+        <p>Every file DataMCP generates lives in the team's repository, under their version control. The generated dbt models follow naming conventions, include column-level documentation, apply correct materialisation strategies, and ship with data quality tests. There is no proprietary format. The output is standard dbt.</p>
+        <ul class="feat-list">
+          <li>Staging models with column renaming and type casting</li>
+          <li>Mart layer with fact and dimension separation</li>
+          <li><code>not_null</code> + <code>unique</code> tests on every primary key</li>
+          <li><code>relationships</code> tests on all detected foreign keys</li>
+          <li>Column-level docs in <code>schema.yml</code> for every model</li>
+          <li>Streaming-aware incremental models for Kafka sources</li>
+        </ul>
+      </div>
+      <div>
+        <div class="stone-panel">
+          <div class="stone-badge">Generated dbt Project</div>
+          <h4>Full project structure from one prompt</h4>
+          <p>All files committed to the repo. Readable, editable, owned by the team.</p>
+          <div class="stone-tools">
+            <span class="st">dbt_project.yml</span>
+            <span class="st">profiles.yml</span>
+            <span class="st">sources.yml</span>
+            <span class="st">stg_*.sql</span>
+            <span class="st">int_*.sql</span>
+            <span class="st">fct_*.sql</span>
+            <span class="st">dim_*.sql</span>
+            <span class="st">schema.yml</span>
+            <span class="st">metrics.yml</span>
+            <span class="st">macros/</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── METRICS ── -->
+<section class="sec s3">
+  <div class="inner">
+    <div class="ey">Build Quality</div>
+    <h2 class="hl">Built to <em>production standard</em><br>from day one</h2>
+    <p class="lead">Every stone ships with full test coverage, typed interfaces, and CI-ready structure. The MCP protocol contract is stable across all six stones.</p>
+    <div class="metrics">
+      <div class="metric"><div class="metric-n">232</div><div class="metric-l">Tests passing<br>CI-enforced threshold</div></div>
+      <div class="metric"><div class="metric-n">20</div><div class="metric-l">MCP tools<br>registered & dispatched</div></div>
+      <div class="metric"><div class="metric-n">6</div><div class="metric-l">Capability stones<br>delivered</div></div>
+      <div class="metric"><div class="metric-n">100%</div><div class="metric-l">Schema coverage<br>staging per table</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ALL TOOLS ── -->
+<section class="sec s1" id="tools">
+  <div class="inner">
+    <div class="ey">MCP Tool Reference</div>
+    <h2 class="hl">20 tools. <em>Every layer covered.</em></h2>
+    <p class="lead">Each tool is a typed Python function registered with the MCP server. Tools are organised by capability layer and can be composed by the AI in any sequence to complete complex data engineering tasks.</p>
+
+    <div class="tools-grid">
+
+      <div class="tool-card">
+        <div class="tool-cat">Schema · Stone 1</div>
+        <div class="tool-name">connect_database</div>
+        <div class="tool-desc">Establish a Postgres connection. Stores credentials in OS keychain. Returns connection summary.</div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-cat">Schema · Stone 1</div>
+        <div class="tool-name">introspect_schema</div>
+        <div class="tool-desc">Map all tables, columns, types, PKs, FKs, indexes, and row counts into the schema knowledge graph.</div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-cat">Schema · Stone 1</div>
+        <div class="tool-name">infer_domain</div>
+        <div class="tool-desc">Classify the business domain (SaaS, e-commerce, fintech…) from schema patterns. Confidence-scored.</div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-cat">Schema · Stone 1</div>
+        <div class="tool-name">infer_model_candidates</div>
+        <div class="tool-desc">Rank and recommend staging models, intermediate joins, facts, and dimensions based on the schema graph.</div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-cat">Schema · Stone 1</div>
+        <div class="tool-name">generate_er_diagram</div>
+        <div class="tool-desc">Produce a Mermaid ER diagram from the schema graph for documentation and code review.</div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-cat">Generation · Stone 1</div>
+        <div class="tool-name">generate_staging_models</div>
+        <div class="tool-desc">Generate one staging model per source table with column renaming, casting, not_null + unique tests.</div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-cat">Generation · Stone 1</div>
+        <div class="tool-name">generate_mart_models</div>
+        <div class="tool-desc">Generate fact and dimension mart models with schema.yml documentation and relationship tests.</div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-cat">Generation · Stone 1</div>
+        <div class="tool-name">generate_kpis</div>
+        <div class="tool-desc">Define domain-specific KPIs as dbt metrics — name, formula, owning model, grain, cadence.</div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-cat">Generation · Stone 1</div>
+        <div class="tool-name">generate_dbt_macros</div>
+        <div class="tool-desc">Generate reusable dbt macro library for the project — type-safe column casting, surrogate keys.</div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-cat">Execution · Stone 1</div>
+        <div class="tool-name">generate_dbt_project</div>
+        <div class="tool-desc">Scaffold the full dbt project skeleton — dbt_project.yml, profiles.yml, directory structure.</div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-cat">Execution · Stone 1</div>
+        <div class="tool-name">run_dbt</div>
+        <div class="tool-desc">Execute dbt run, test, or docs generate. Capture failures with plain-English explanations.</div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-cat">Execution · Stone 1</div>
+        <div class="tool-name">execute_sql</div>
+        <div class="tool-desc">Run arbitrary SQL against the connected Postgres database. Results returned as structured data.</div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-cat">Monitoring · Stone 1</div>
+        <div class="tool-name">check_freshness</div>
+        <div class="tool-desc">Compare table update timestamps against expected cadence. Surface staleness warnings.</div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-cat">Knowledge · Stone 1</div>
+        <div class="tool-name">query_knowledge_base</div>
+        <div class="tool-desc">Natural language search over the accumulated knowledge base — schemas, models, KPIs, run history.</div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-cat">BI · Stone 2</div>
+        <div class="tool-name">connect_metabase</div>
+        <div class="tool-desc">Provision a Metabase database connection pointing to the Postgres instance. Stores config in KB.</div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-cat">BI · Stone 2</div>
+        <div class="tool-name">sync_metabase</div>
+        <div class="tool-desc">Trigger Metabase schema sync and wait for completion. Surfaces new tables and field changes.</div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-cat">BI · Stone 2</div>
+        <div class="tool-name">create_metabase_dashboard</div>
+        <div class="tool-desc">Scaffold a Metabase dashboard from the KPI definitions — one question per KPI, auto-visualised.</div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-cat">Orchestration · Stone 3</div>
+        <div class="tool-name">scaffold_dagster</div>
+        <div class="tool-desc">Generate a complete Dagster project with dbt asset definitions, freshness sensors, and schedules.</div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-cat">Orchestration · Stone 3</div>
+        <div class="tool-name">get_pipeline_status</div>
+        <div class="tool-desc">Query live Dagster pipeline state via GraphQL. Returns run status, asset materialisation history.</div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-cat">Ingestion · Stone 4</div>
+        <div class="tool-name">scaffold_dlt</div>
+        <div class="tool-desc">Generate a dlt pipeline for a specified source (Stripe, HubSpot, Shopify…) with destination config.</div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-cat">Ingestion · Stone 4</div>
+        <div class="tool-name">run_dlt</div>
+        <div class="tool-desc">Execute a dlt pipeline subprocess. Parse row counts. Persist run record to knowledge base.</div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-cat">Ingestion · Stone 4</div>
+        <div class="tool-name">explain_model</div>
+        <div class="tool-desc">Generate plain-English documentation for a dbt model — column meanings, business context, lineage.</div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-cat">Ingestion · Stone 4</div>
+        <div class="tool-name">query_data</div>
+        <div class="tool-desc">Natural language to SQL — translate a question into a query, execute it, and return results.</div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-cat">Streaming · Stone 5</div>
+        <div class="tool-name">provision_kafka_topic</div>
+        <div class="tool-desc">Create a Kafka topic with configurable partitions, replication, retention. Stores config in KB.</div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-cat">Streaming · Stone 5</div>
+        <div class="tool-name">configure_postgres_sink</div>
+        <div class="tool-desc">Generate Debezium or JDBC sink connector JSON config for streaming data into Postgres.</div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-cat">Streaming · Stone 5</div>
+        <div class="tool-name">check_consumer_lag</div>
+        <div class="tool-desc">Query consumer group lag per partition. Flag high-lag partitions. Returns structured lag report.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── ARCHITECTURE ── -->
+<section class="sec s2" id="arch">
+  <div class="inner">
+    <div class="ey">Architecture</div>
+    <h2 class="hl">One server. <em>Six layers.</em><br>One knowledge base.</h2>
+    <p class="lead">DataMCP is a single MCP server process with a typed tool registry. All tools share a common knowledge base client and a database connection pool. The MCP protocol contract is stable — adding new tools never changes the interface for existing ones.</p>
+
+    <div class="arch">
+      <div class="arch-row ar1">
+        <div class="ab t">
+          <div class="ab-label">AI Coding Assistants</div>
+          <div class="ab-title">Claude Code · Cursor · Codex</div>
+          <div class="ab-desc">MCP client layer — calls DataMCP tools via the Model Context Protocol. Developer stays in their editor throughout.</div>
+        </div>
+      </div>
+
+      <div class="arch-arrow">↓</div>
+
+      <div class="arch-row ar1">
+        <div class="ab t">
+          <div class="ab-label">MCP Server — datamcp</div>
+          <div class="ab-title">Tool Registry · Dispatcher · Connection Pool</div>
+          <div class="ab-desc">20 typed tools registered via FastMCP. Dispatcher routes calls. Shared Postgres connection pool and KB client injected into every tool handler. OS keychain for credential storage.</div>
+        </div>
+      </div>
+
+      <div class="arch-arrow">↓</div>
+
+      <div class="arch-row ar3">
+        <div class="ab">
+          <div class="ab-label">Core — Stones 1–2</div>
+          <div class="ab-title">Schema · dbt · Metabase</div>
+          <div class="ab-desc">Introspection, domain inference, dbt project generation, Jinja2 templates, Metabase API client, ER diagram.</div>
+        </div>
+        <div class="ab">
+          <div class="ab-label">Runtime — Stones 3–4</div>
+          <div class="ab-title">Dagster · dlt · Query</div>
+          <div class="ab-desc">Dagster process manager (GraphQL polling), dlt subprocess runner, NL-to-SQL, drift detection, model explanation.</div>
+        </div>
+        <div class="ab">
+          <div class="ab-label">Streaming — Stone 5</div>
+          <div class="ab-title">Kafka · Debezium · Lag</div>
+          <div class="ab-desc">kafka-python admin client (optional extra), consumer lag polling, connector config generation, streaming dbt templates.</div>
+        </div>
+      </div>
+
+      <div class="arch-arrow">↓</div>
+
+      <div class="arch-row ar2">
+        <div class="ab b">
+          <div class="ab-label">Knowledge Base</div>
+          <div class="ab-title">SQLite — 12 Tables — Persistent Context</div>
+          <div class="ab-desc">Schema graph snapshots, generated models, KPI definitions, pipeline run history, Metabase chart metadata, Kafka configs, freshness logs, query history. Idempotent migrations on startup.</div>
+        </div>
+        <div class="ab b">
+          <div class="ab-label">Generated Artefacts</div>
+          <div class="ab-title">dbt Project · Dagster Project · dlt Pipelines</div>
+          <div class="ab-desc">All generated files written to the project repository. Standard formats — dbt YAML, Python — no proprietary lock-in. Version-controlled and editable by any engineer.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TECH STACK ── -->
+<section class="sec s3">
+  <div class="inner">
+    <div class="ey">Technology Stack</div>
+    <h2 class="hl">Standard tools.<br><em>No proprietary lock-in.</em></h2>
+    <p class="lead">DataMCP is built on the established open-source data engineering ecosystem. Every tool it generates uses standards that any data engineer already knows.</p>
+    <div class="tech-groups">
+      <div>
+        <div class="tg-label">Core Server</div>
+        <div class="tg-row">
+          <span class="tb">🐍 Python 3.11+</span>
+          <span class="tb">⚡ FastMCP</span>
+          <span class="tb">🔧 uv (dependency management)</span>
+          <span class="tb">🔐 keyring (OS keychain)</span>
+          <span class="tb">📦 pyproject.toml</span>
+        </div>
+      </div>
+      <div>
+        <div class="tg-label">Data Transformation</div>
+        <div class="tg-row">
+          <span class="tb">🔧 dbt-core</span>
+          <span class="tb">🐘 dbt-postgres</span>
+          <span class="tb">📝 Jinja2 templates</span>
+          <span class="tb">📊 dbt metrics</span>
+          <span class="tb">🧪 dbt test suite</span>
+        </div>
+      </div>
+      <div>
+        <div class="tg-label">Ingestion & Orchestration</div>
+        <div class="tg-row">
+          <span class="tb">🔌 dlt (data load tool)</span>
+          <span class="tb">⏱️ Dagster</span>
+          <span class="tb">🔗 Dagster GraphQL API</span>
+          <span class="tb">🐘 psycopg2</span>
+          <span class="tb">📡 SQLAlchemy</span>
+        </div>
+      </div>
+      <div>
+        <div class="tg-label">Streaming</div>
+        <div class="tg-row">
+          <span class="tb">⚡ Apache Kafka</span>
+          <span class="tb">🐍 kafka-python (optional)</span>
+          <span class="tb">🔄 Debezium</span>
+          <span class="tb">🔌 JDBC Sink</span>
+        </div>
+      </div>
+      <div>
+        <div class="tg-label">BI & Visualisation</div>
+        <div class="tg-row">
+          <span class="tb">📊 Metabase</span>
+          <span class="tb">🌐 Metabase REST API</span>
+          <span class="tb">📈 Mermaid ER diagrams</span>
+        </div>
+      </div>
+      <div>
+        <div class="tg-label">Knowledge Base & Testing</div>
+        <div class="tg-row">
+          <span class="tb">🗄️ SQLite (local KB)</span>
+          <span class="tb">🧪 pytest</span>
+          <span class="tb">🎭 unittest.mock</span>
+          <span class="tb">📏 pytest-cov</span>
+          <span class="tb">🔍 mypy (type checking)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ROADMAP ── -->
+<section class="sec s1" id="roadmap">
+  <div class="inner">
+    <div class="ey">Delivery Roadmap</div>
+    <h2 class="hl">Six stones delivered.<br><em>The ecosystem expands.</em></h2>
+    <p class="lead">Each stone was scoped to be independently useful — a team gets real value from Stone 1 alone on day one. The full stack unlocks progressively as stones are added.</p>
+
+    <div class="road-grid">
+      <div class="road-card done">
+        <div class="road-stone">Stone 1</div>
+        <div class="road-t">Postgres + dbt Foundation</div>
+        <div class="road-d">Schema introspection, domain inference, full dbt project generation, KPI definitions, data quality tests, freshness monitoring, SQLite knowledge base.</div>
+        <span class="road-tag d">✓ Complete</span>
+      </div>
+      <div class="road-card done">
+        <div class="road-stone">Stone 2</div>
+        <div class="road-t">Metabase BI Integration</div>
+        <div class="road-d">Metabase connection provisioning, schema sync, KPI-driven dashboard scaffolding, chart metadata stored in knowledge base.</div>
+        <span class="road-tag d">✓ Complete</span>
+      </div>
+      <div class="road-card done">
+        <div class="road-stone">Stone 3</div>
+        <div class="road-t">Dagster Orchestration</div>
+        <div class="road-d">Dagster project scaffolding, runtime start/stop, GraphQL pipeline polling, freshness SLA sensor, streaming table skip logic.</div>
+        <span class="road-tag d">✓ Complete</span>
+      </div>
+      <div class="road-card done">
+        <div class="road-stone">Stone 4</div>
+        <div class="road-t">dlt Ingestion Pipelines</div>
+        <div class="road-d">dlt scaffold and execution, row count parsing, KB persistence, source-to-staging drift detection, pipeline status surfacing.</div>
+        <span class="road-tag d">✓ Complete</span>
+      </div>
+      <div class="road-card done">
+        <div class="road-stone">Stone 5</div>
+        <div class="road-t">Kafka Streaming Layer</div>
+        <div class="road-d">Topic provisioning, Postgres sink config, consumer lag monitoring, streaming-aware dbt incremental templates, hybrid batch/stream freshness tracking.</div>
+        <span class="road-tag d">✓ Complete</span>
+      </div>
+      <div class="road-card done">
+        <div class="road-stone">Stone 6</div>
+        <div class="road-t">Chat GUI Interface</div>
+        <div class="road-d">Streamlit chat frontend with RAG-powered answers grounded in the full knowledge base. Non-developer access to the same infrastructure engineers manage in their editor.</div>
+        <span class="road-tag d">✓ Partial</span>
+      </div>
+      <div class="road-card coming">
+        <div class="road-stone">Stone 7</div>
+        <div class="road-t">Multi-Database Support</div>
+        <div class="road-d">Database adapter interface enabling MySQL, Snowflake, BigQuery, and DuckDB. Write once, run on any supported backend. Connector marketplace architecture.</div>
+        <span class="road-tag c">Planned</span>
+      </div>
+      <div class="road-card coming">
+        <div class="road-stone">Stone 8</div>
+        <div class="road-t">Alternative Stacks</div>
+        <div class="road-d">SQLMesh and Trino as transformation alternatives. Grafana and Superset as BI alternatives. Stack configuration profiles — user selects tools, DataMCP configures itself.</div>
+        <span class="road-tag c">Planned</span>
+      </div>
+      <div class="road-card coming">
+        <div class="road-stone">Stone 9</div>
+        <div class="road-t">Enterprise & Compliance</div>
+        <div class="road-d">Data lineage tracking, column-level access controls, audit log for all MCP tool calls, PII detection and masking, SOC 2 compatible run history.</div>
+        <span class="road-tag c">Planned</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── COMPETITIVE MOAT ── -->
+<section class="sec s2">
+  <div class="inner">
+    <div class="ey">Competitive Moat</div>
+    <h2 class="hl">Depth of context,<br><em>not breadth of features</em></h2>
+    <div class="prob-grid">
+      <div class="prob-card">
+        <div class="prob-n">01</div>
+        <div class="prob-t">Context compounds every week</div>
+        <div class="prob-d">After six months of use, DataMCP knows a team's schema evolution history, KPI decisions, pipeline failure patterns, and query habits better than any new hire. That knowledge is not portable — it compounds continuously in the local knowledge base.</div>
+      </div>
+      <div class="prob-card">
+        <div class="prob-n">02</div>
+        <div class="prob-t">Zero adoption friction</div>
+        <div class="prob-d">DataMCP plugs into Claude Code, Cursor, and Codex — tools developers are already using. There is no new platform to learn, no new dashboard to open, no migration required. Adoption is one MCP server entry in a config file.</div>
+      </div>
+      <div class="prob-card">
+        <div class="prob-n">03</div>
+        <div class="prob-t">Output is owned by the team</div>
+        <div class="prob-d">Every file DataMCP generates lives in the team's repository, under their version control. Standard dbt. Standard YAML. Standard Python. The lock-in comes from context depth, not from format capture. Teams can always eject — but they won't want to.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<section class="cta-sec" id="contact">
+  <div class="cta-inner">
+    <h2>Ready to see DataMCP in action?</h2>
+    <p>
+      The full source — MCP server, 20 tools, 6 stones, Jinja2 templates, SQLite knowledge base,
+      Dagster integration, Kafka connectors, and 232 passing tests — is available on request.
+      Built as a portfolio project demonstrating production-grade AI data engineering.
+    </p>
+    <a class="cta-btn" href="mailto:nihilsdesk@gmail.com">
+      ✉ Request Repository Access
+    </a>
+    <div class="cta-note">Nihildev Nandakumar · nihilsdesk@gmail.com · Available for data engineering and AI systems roles</div>
+  </div>
+</section>
+
+<footer>
+  <strong>DataMCP</strong> — AI Data Engineer MCP Server ·
+  Built by <strong>Nihildev Nandakumar</strong> ·
+  Python · dbt · Dagster · Kafka · Metabase · FastMCP
+</footer>
+
+</body>
+</html>
