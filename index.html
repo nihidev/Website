@@ -348,6 +348,32 @@ h2.ht.w em{color:#a5b4fc;}
 .fact-val{font-size:14px;font-weight:700;color:var(--tx);}
 .fact-sub{font-size:12px;color:var(--sub);margin-top:2px;line-height:1.4;}
 @media(max-width:900px){.about-layout{grid-template-columns:1fr;gap:40px;}.about-aside{position:static;}}
+.insights-panel{
+  margin-top:48px;
+  background:linear-gradient(135deg,#f0f4ff 0%,#fafbff 100%);
+  border:1px solid var(--bdr);border-radius:18px;padding:32px 36px;
+}
+.insights-header{display:flex;align-items:center;gap:14px;margin-bottom:24px;}
+.insights-badge{
+  font-size:10px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;
+  color:#1a56a0;background:#e0ecff;border:1px solid #b8d4f8;
+  padding:5px 12px;border-radius:20px;flex-shrink:0;
+}
+.insights-heading{font-size:15px;font-weight:800;color:var(--tx);letter-spacing:-.2px;}
+.insights-sub{font-size:12px;color:var(--sub);margin-top:2px;}
+.insights-traits{
+  display:grid;grid-template-columns:1fr 1fr;gap:10px 32px;
+}
+@media(max-width:640px){.insights-traits{grid-template-columns:1fr;}}
+.insights-trait{
+  display:flex;align-items:flex-start;gap:9px;
+  font-size:13.5px;color:var(--sub);line-height:1.55;
+}
+.insights-trait::before{
+  content:"";flex-shrink:0;
+  width:6px;height:6px;border-radius:50%;
+  background:#1a56a0;margin-top:6px;
+}
 
 /* ═══════════════════════════════════════════════════════
    TERMINAL IDENTITY SNAP
@@ -659,7 +685,7 @@ footer{
     <a href="#linkedin">LinkedIn</a>
     <a href="#contact">Contact</a>
   </nav>
-  <a class="mob-dl" href="./Nihildev_Nandakumar_CV.pdf" download aria-label="Download CV as PDF">⬇ Download CV</a>
+  <a class="mob-dl" href="./Nihildev_Nandakumar_CV.pdf" target="_blank" rel="noopener" aria-label="Download CV as PDF">⬇ Download CV</a>
 </div>
 
 <!-- ── DOT NAVIGATOR ── -->
@@ -687,7 +713,7 @@ footer{
     <a href="#contact">Contact</a>
   </div>
   <div class="nav-right">
-    <a class="nav-dl" href="./Nihildev_Nandakumar_CV.pdf" download aria-label="Download CV as PDF">⬇ Download CV</a>
+    <a class="nav-dl" href="./Nihildev_Nandakumar_CV.pdf" target="_blank" rel="noopener" aria-label="Download CV as PDF">⬇ Download CV</a>
     <a class="nav-cta" href="#contact">Get in Touch</a>
     <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mob-menu">
       <span></span><span></span><span></span>
@@ -735,7 +761,7 @@ footer{
     <div class="hero-ctas">
       <a class="btn-p" href="#contact">✉ Get in Touch</a>
       <!-- Place compiled CV at ./Nihildev_Nandakumar_CV.pdf -->
-      <a class="btn-s" href="./Nihildev_Nandakumar_CV.pdf" download aria-label="Download CV as PDF">⬇ Download CV</a>
+      <a class="btn-s" href="./Nihildev_Nandakumar_CV.pdf" target="_blank" rel="noopener" aria-label="Download CV as PDF">⬇ Download CV</a>
     </div>
     <div class="hero-pills" aria-label="Core skills">
       <span class="pill">🤖 LLM &amp; Agentic AI</span>
@@ -809,6 +835,30 @@ footer{
         </div>
       </aside>
     </div>
+
+    <!-- Insights Discovery panel -->
+    <div class="insights-panel fi d2">
+      <div class="insights-header">
+        <span class="insights-badge">Insights Discovery</span>
+        <div>
+          <div class="insights-heading">Value to the Team</div>
+          <div class="insights-sub">Professional personality assessment · Insights Discovery®</div>
+        </div>
+      </div>
+      <div class="insights-traits">
+        <span class="insights-trait">Provides stimulation and resourcefulness</span>
+        <span class="insights-trait">Brings boundless energy to any situation</span>
+        <span class="insights-trait">Challenges existing methods if he feels they are inadequate</span>
+        <span class="insights-trait">Communicates clearly and effectively</span>
+        <span class="insights-trait">Initiates, justifies, actions and defends</span>
+        <span class="insights-trait">Is the life and soul of the group — often "centre stage"</span>
+        <span class="insights-trait">Knows nothing is impossible</span>
+        <span class="insights-trait">Will lead by fighting alongside the troops in the trenches</span>
+        <span class="insights-trait">Promotes ideas to, with and through others</span>
+        <span class="insights-trait">Can become a persuasive, inspirational leader</span>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -1220,23 +1270,23 @@ footer{
         </div>
       </div>
 
-      <!-- Nihildev's own post: PLACED -->
+      <!-- Fatih Temel comment: PLACED co-founder endorsement -->
       <div class="li-card">
         <div class="li-author">
-          <div class="li-avatar">NN</div>
+          <div class="li-avatar" style="background:#0a66c2;">FT</div>
           <div>
-            <div class="li-name">Nihildev Nandakumar</div>
-            <div class="li-title">AI Engineering Leader · Berlin</div>
+            <div class="li-name">Fatih Temel</div>
+            <div class="li-title">Co-Founder · PLACED</div>
           </div>
           <div class="li-in-icon">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
           </div>
         </div>
         <p class="li-excerpt">
-          Introducing <strong>PLACED</strong> — AI-driven recruitment for headhunter agencies. Moving from manual guesswork to data-backed certainty: precision gap analysis, smart candidate prioritisation by match strength, and real-time market intelligence for sourcing strategies.
+          "You are an <strong>incredible developer</strong> and your family can be extremely proud of you! Let's transform this industry together and bring candidate placement into the era of AI!"
         </p>
         <div class="li-meta">
-          <span class="li-likes">👍 6 reactions</span>
+          <span class="li-likes">❤️ 1 · Comment on PLACED launch</span>
           <a class="li-link" href="https://www.linkedin.com/posts/nihildev_placed-%F0%9D%97%82%F0%9D%97%8C%F0%9D%97%8D-%F0%9D%96%BD%F0%9D%97%82%F0%9D%96%BE-%F0%9D%96%BE%F0%9D%97%8B%F0%9D%97%8C%F0%9D%97%8D%F0%9D%96%BE-%F0%9D%96%AA%F0%9D%96%A8-%F0%9D%96%B5%F0%9D%96%BE-activity-7343584098227040256-h5Ut" target="_blank" rel="noopener">View post ↗</a>
         </div>
       </div>
@@ -1283,7 +1333,7 @@ footer{
         ↗ LinkedIn
       </a>
       <!-- Place compiled CV at ./Nihildev_Nandakumar_CV.pdf -->
-      <a class="cb-dl" href="./Nihildev_Nandakumar_CV.pdf" download aria-label="Download CV as PDF">
+      <a class="cb-dl" href="./Nihildev_Nandakumar_CV.pdf" target="_blank" rel="noopener" aria-label="Download CV as PDF">
         ⬇ Download CV
       </a>
     </div>
