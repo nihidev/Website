@@ -105,29 +105,40 @@ h2.ht.w em{color:#a5b4fc;}
   display:none;position:fixed;inset:0;z-index:500;
   background:rgba(10,11,20,.98);backdrop-filter:blur(24px);
   -webkit-backdrop-filter:blur(24px);
-  flex-direction:column;align-items:center;justify-content:center;gap:36px;
+  flex-direction:column;align-items:center;justify-content:flex-start;
+  overflow-y:auto;-webkit-overflow-scrolling:touch;
+  padding:88px 24px 48px;gap:0;
 }
 #mob-menu.open{display:flex;}
 #mob-close{
-  position:absolute;top:18px;right:22px;
+  position:fixed;top:18px;right:22px;z-index:501;
   background:transparent;border:none;
   color:var(--ws);font-size:28px;cursor:pointer;padding:8px;
   line-height:1;transition:color .15s;
 }
 #mob-close:hover{color:var(--wt);}
-.mob-nav{display:flex;flex-direction:column;align-items:center;gap:28px;}
-.mob-nav a{
-  font-size:30px;font-weight:900;letter-spacing:-1px;
-  color:var(--wt);text-decoration:none;
-  transition:color .15s,transform .15s;
+.mob-nav{
+  position:static;display:flex;flex-direction:column;align-items:stretch;
+  width:100%;max-width:320px;gap:4px;
+  background:transparent;border:none;height:auto;padding:0;
 }
-.mob-nav a:hover{color:var(--ind);transform:translateX(4px);}
+.mob-nav a{
+  display:block;width:100%;text-align:center;
+  font-size:clamp(26px,7vw,32px);font-weight:900;letter-spacing:-1px;
+  color:var(--wt);text-decoration:none;
+  padding:14px 16px;border-radius:10px;
+  transition:color .15s,background .15s;
+  -webkit-tap-highlight-color:transparent;
+}
+.mob-nav a:hover,.mob-nav a.active{color:#a5b4fc;}
+.mob-nav a.active{background:rgba(79,70,229,.12);}
 .mob-dl{
-  display:inline-flex;align-items:center;gap:8px;
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
   background:var(--ind);color:#fff;
-  padding:12px 28px;border-radius:10px;
+  padding:14px 28px;border-radius:10px;
   font-size:15px;font-weight:700;text-decoration:none;
-  margin-top:8px;
+  margin-top:32px;flex-shrink:0;
+  -webkit-tap-highlight-color:transparent;
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -149,7 +160,7 @@ h2.ht.w em{color:#a5b4fc;}
 /* ═══════════════════════════════════════════════════════
    NAV
 ═══════════════════════════════════════════════════════ */
-nav{
+.site-nav{
   position:sticky;top:0;z-index:400;
   background:rgba(250,251,255,.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
   border-bottom:1px solid var(--bdr);
@@ -206,7 +217,7 @@ nav{
 .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
 
 @media(max-width:780px){
-  nav{padding:0 20px;}
+  .site-nav{padding:0 20px;}
   .nav-links,.nav-dl{display:none;}
   .hamburger{display:flex;}
 }
@@ -586,6 +597,47 @@ footer{
 .fl a{font-size:13px;color:var(--wm);text-decoration:none;transition:color .15s;}
 .fl a:hover{color:var(--ws);}
 @media(max-width:580px){footer{flex-direction:column;text-align:center;padding:28px 20px;}.fl{justify-content:center;}}
+
+/* ═══════════════════════════════════════════════════════
+   LINKEDIN POSTS
+═══════════════════════════════════════════════════════ */
+.li-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:52px;}
+@media(max-width:960px){.li-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:620px){.li-grid{grid-template-columns:1fr;}}
+.li-card{
+  background:var(--bg);border:1px solid var(--bdr);border-radius:16px;padding:26px;
+  display:flex;flex-direction:column;gap:16px;
+  transition:transform .2s,border-color .2s,box-shadow .2s;
+}
+.li-card:hover{transform:translateY(-3px);border-color:#c7d0f8;box-shadow:0 8px 32px rgba(79,70,229,.08);}
+.li-card.feat{border-color:rgba(79,70,229,.3);background:linear-gradient(140deg,rgba(79,70,229,.04) 0%,var(--bg) 60%);}
+.li-author{display:flex;align-items:center;gap:12px;}
+.li-avatar{
+  width:40px;height:40px;border-radius:50%;
+  background:var(--ind);color:#fff;
+  font-size:13px;font-weight:800;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;letter-spacing:.5px;
+}
+.li-avatar.green{background:var(--grn);}
+.li-avatar.purple{background:var(--pur);}
+.li-name{font-size:13.5px;font-weight:700;color:var(--tx);line-height:1.2;}
+.li-title{font-size:11.5px;color:var(--sub);margin-top:2px;}
+.li-in-icon{
+  margin-left:auto;flex-shrink:0;
+  width:28px;height:28px;border-radius:6px;
+  background:#0a66c2;display:flex;align-items:center;justify-content:center;
+}
+.li-in-icon svg{width:14px;height:14px;fill:#fff;}
+.li-excerpt{font-size:13px;color:var(--sub);line-height:1.75;flex:1;}
+.li-excerpt strong{color:var(--tx);}
+.li-meta{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:14px;border-top:1px solid var(--bdr);}
+.li-likes{font-size:12px;color:var(--mut);display:flex;align-items:center;gap:5px;}
+.li-link{
+  font-size:12px;font-weight:700;color:var(--ind);text-decoration:none;
+  display:flex;align-items:center;gap:4px;transition:gap .15s,color .15s;
+}
+.li-link:hover{gap:6px;color:var(--ind2);}
 </style>
 </head>
 <body>
@@ -604,6 +656,7 @@ footer{
     <a href="#projects">Projects</a>
     <a href="#experience">Experience</a>
     <a href="#research">Research</a>
+    <a href="#linkedin">LinkedIn</a>
     <a href="#contact">Contact</a>
   </nav>
   <a class="mob-dl" href="./Nihildev_Nandakumar_CV.pdf" download aria-label="Download CV as PDF">⬇ Download CV</a>
@@ -615,11 +668,12 @@ footer{
   <a href="#projects"   aria-label="Projects"></a>
   <a href="#experience" aria-label="Experience"></a>
   <a href="#research"   aria-label="Research"></a>
+  <a href="#linkedin"   aria-label="LinkedIn"></a>
   <a href="#contact"    aria-label="Contact"></a>
 </nav>
 
 <!-- ── NAV ── -->
-<nav>
+<nav class="site-nav">
   <a class="nav-brand" href="#" aria-label="Nihildev Nandakumar — home">
     <span class="nav-brand-dot" aria-hidden="true"></span>
     Nihildev Nandakumar
@@ -629,6 +683,7 @@ footer{
     <a href="#projects">Projects</a>
     <a href="#experience">Experience</a>
     <a href="#research">Research</a>
+    <a href="#linkedin">LinkedIn</a>
     <a href="#contact">Contact</a>
   </div>
   <div class="nav-right">
@@ -892,8 +947,8 @@ footer{
         <div class="ml">Privacy protection<br>improvement (thesis)</div>
       </div>
       <div class="mb">
-        <div class="mn" data-count="100" data-suffix="+">100+</div>
-        <div class="ml">Engineers reached at<br>AI Agents workshop</div>
+        <div class="mn" data-count="30" data-suffix="+">30+</div>
+        <div class="ml">Developers reached at<br>AI Agents workshop</div>
       </div>
     </div>
   </div>
@@ -1011,7 +1066,7 @@ footer{
     <div class="fi">
       <div class="ey w">Research &amp; Thought Leadership</div>
       <h2 class="ht w">The rare engineer who<br><em>publishes what they build</em></h2>
-      <p class="lead w">Peer-reviewed at a flagship NLP conference. Workshop speaker to 100+ senior engineers across Europe.</p>
+      <p class="lead w">Peer-reviewed at a flagship NLP conference. Workshop speaker to 30+ developers across Europe.</p>
     </div>
     <div class="res-grid fi d1">
 
@@ -1039,10 +1094,10 @@ footer{
         <div class="res-venue">International Showtimes · Europe · April 2025</div>
         <div class="res-title">AI Agents &amp; Automation: Building the Next Wave of Enterprise Intelligence</div>
         <p class="res-desc">
-          Designed and delivered a full-day workshop on AI-first development to 100+ senior engineers and managers. Topics: LLM multi-step orchestration, prompt engineering, n8n automation. Guided teams in adopting responsible AI practices into existing production workflows.
+          Designed and delivered a full-day workshop on AI agents and automation to 30+ developers. Topics: LLM multi-step orchestration, prompt engineering, n8n automation. Sparked adoption of no/low-code AI tools in production workflows — part of International Showtimes' Q2 initiative to become the most productive team on the planet.
         </p>
         <div class="res-chips">
-          <span class="res-chip">👥 100+ Attendees</span>
+          <span class="res-chip">👥 30+ Developers</span>
           <span class="res-chip">📅 April 2025</span>
           <span class="res-chip">⚙️ LLMs · Agents · Automation</span>
         </div>
@@ -1133,6 +1188,80 @@ footer{
           <span class="stag">Cursor</span><span class="stag">n8n Automation</span>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── LINKEDIN POSTS ── -->
+<section class="sec s2" id="linkedin">
+  <div class="inner fi">
+    <div class="ey">On LinkedIn</div>
+    <h2 class="ht">What people say,<br><em>and what I share</em></h2>
+    <div class="li-grid fi d1">
+
+      <!-- Featured: Founder post about workshop -->
+      <div class="li-card feat">
+        <div class="li-author">
+          <div class="li-avatar green">VD</div>
+          <div>
+            <div class="li-name">Valentin Degen</div>
+            <div class="li-title">Founder · International Showtimes</div>
+          </div>
+          <div class="li-in-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </div>
+        </div>
+        <p class="li-excerpt">
+          "We kicked things off with a great workshop led by <strong>Nihildev Nandakumar</strong> on AI agents and automation. One key takeaway: the space is evolving fast, especially with no/low-code tools like n8n, which we started using right away… it sparked valuable discussions and laid the groundwork for long-term impact."
+        </p>
+        <div class="li-meta">
+          <span class="li-likes">👍 20 reactions · April 2025</span>
+          <a class="li-link" href="https://www.linkedin.com/feed/update/urn:li:share:7350472307481440258/" target="_blank" rel="noopener">View post ↗</a>
+        </div>
+      </div>
+
+      <!-- Nihildev's own post: PLACED -->
+      <div class="li-card">
+        <div class="li-author">
+          <div class="li-avatar">NN</div>
+          <div>
+            <div class="li-name">Nihildev Nandakumar</div>
+            <div class="li-title">AI Engineering Leader · Berlin</div>
+          </div>
+          <div class="li-in-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </div>
+        </div>
+        <p class="li-excerpt">
+          Introducing <strong>PLACED</strong> — AI-driven recruitment for headhunter agencies. Moving from manual guesswork to data-backed certainty: precision gap analysis, smart candidate prioritisation by match strength, and real-time market intelligence for sourcing strategies.
+        </p>
+        <div class="li-meta">
+          <span class="li-likes">👍 6 reactions</span>
+          <a class="li-link" href="https://www.linkedin.com/posts/nihildev_placed-%F0%9D%97%82%F0%9D%97%8C%F0%9D%97%8D-%F0%9D%96%BD%F0%9D%97%82%F0%9D%96%BE-%F0%9D%96%BE%F0%9D%97%8B%F0%9D%97%8C%F0%9D%97%8D%F0%9D%96%BE-%F0%9D%96%AA%F0%9D%96%A8-%F0%9D%96%B5%F0%9D%96%BE-activity-7343584098227040256-h5Ut" target="_blank" rel="noopener">View post ↗</a>
+        </div>
+      </div>
+
+      <!-- Magaly's post: Infineon dashboard -->
+      <div class="li-card">
+        <div class="li-author">
+          <div class="li-avatar purple">MT</div>
+          <div>
+            <div class="li-name">Magaly Thierry</div>
+            <div class="li-title">Project Lead · Infineon Technologies</div>
+          </div>
+          <div class="li-in-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </div>
+        </div>
+        <p class="li-excerpt">
+          "The <strong>oneSAP Training Dashboard</strong> built with <strong>Nihildev Nandakumar</strong> tracks the complete training process — invitations, registrations, completions, KPI analysis for go-live decisions, and trainer feedback. Automated daily updates. Supports multiple simultaneous rollouts across Infineon's global digitalization strategy."
+        </p>
+        <div class="li-meta">
+          <span class="li-likes">👍 41 reactions · 5 comments</span>
+          <a class="li-link" href="https://www.linkedin.com/feed/update/urn:li:share:6953269270067740672/" target="_blank" rel="noopener">View post ↗</a>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
