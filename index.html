@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Nihildev Nandakumar · AI Engineering Leader</title>
-<meta name="description" content="AI Engineering Leader and Data Platform Architect with 7+ years building production AI/ML systems. Published at LREC-COLING 2024. Based in Berlin."/>
-<meta property="og:title" content="Nihildev Nandakumar · AI Engineering Leader"/>
-<meta property="og:description" content="€500K seed funding. 100K+ AI evals/day. LREC-COLING 2024 researcher. Available for senior AI roles in Berlin."/>
+<title>Nihildev Nandakumar · AI Engineer · Full-Stack · Data Platform</title>
+<meta name="description" content="AI Engineer building full-stack data products. Open to AI Engineering, Full-Stack, Data Platform, and Analytics roles. 7+ years in production AI/ML. Berlin · EU · Remote."/>
+<meta property="og:title" content="Nihildev Nandakumar · AI Engineer · Full-Stack · Data Platform"/>
+<meta property="og:description" content="AI Engineer building full-stack data products. Berlin preferred · Germany / EU / Remote. LREC-COLING 2024 · €500K seed · 100K+ AI evals/day."/>
 <meta property="og:type" content="website"/>
 <!-- Place a 1200×630 image at og-image.png for rich LinkedIn/Twitter previews -->
 <!-- <meta property="og:image" content="https://your-domain.com/og-image.png"/> -->
@@ -282,9 +282,38 @@ h2.ht.w em{color:#a5b4fc;}
 }
 .hero-role{
   font-size:clamp(14px,1.8vw,19px);font-weight:500;color:var(--sub);
-  margin-bottom:24px;letter-spacing:-.1px;
+  margin-bottom:24px;letter-spacing:-.1px;line-height:1.5;
 }
 .hero-role strong{color:var(--ind);font-weight:700;}
+.hero-role-sub{display:block;margin-top:8px;font-size:clamp(13px,1.5vw,16px);color:var(--mut);font-weight:500;}
+
+/* ═══════════════════════════════════════════════════════
+   WHAT I'M LOOKING FOR (recruiter skim block)
+═══════════════════════════════════════════════════════ */
+.looking-sec{
+  padding:0 48px 56px;
+  margin-top:-32px;
+  position:relative;z-index:2;
+}
+.looking-card{
+  max-width:760px;margin:0 auto;
+  background:var(--bg);border:1px solid var(--bdr);
+  border-radius:16px;padding:28px 32px;text-align:center;
+  box-shadow:0 12px 40px rgba(79,70,229,.08);
+}
+.looking-ey{
+  font-size:10.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--ind);margin-bottom:14px;
+}
+.looking-roles{
+  font-size:clamp(15px,2vw,18px);font-weight:700;color:var(--tx);
+  line-height:1.55;margin-bottom:10px;
+}
+.looking-loc{font-size:14px;color:var(--sub);font-weight:500;}
+@media(max-width:768px){
+  .looking-sec{padding:0 24px 48px;margin-top:-24px;}
+  .looking-card{padding:22px 20px;}
+}
 .hero-desc{
   font-size:17px;color:var(--sub);max-width:560px;
   margin:0 auto 44px;line-height:1.88;
@@ -610,6 +639,10 @@ h2.ht.w em{color:#a5b4fc;}
 .cb-s:hover{border-color:rgba(79,70,229,.5);background:rgba(79,70,229,.08);}
 .cb-dl{display:inline-flex;align-items:center;gap:10px;background:transparent;color:var(--ws);border:1px solid var(--dkb);padding:16px 28px;border-radius:12px;font-size:15px;font-weight:600;text-decoration:none;transition:border-color .15s,color .15s;}
 .cb-dl:hover{border-color:rgba(79,70,229,.5);color:var(--wt);}
+.cb-qr{display:inline-flex;flex-direction:column;align-items:center;gap:6px;border:1px solid var(--dkb);border-radius:12px;padding:10px;text-decoration:none;transition:border-color .15s,background .15s;background:rgba(255,255,255,0.97);}
+.cb-qr:hover{border-color:rgba(79,70,229,.5);background:#fff;}
+.cb-qr img{width:88px;height:88px;display:block;}
+.cb-qr span{font-size:10px;font-weight:700;letter-spacing:.08em;color:#4f46e5;text-transform:uppercase;}
 .contact-fine{font-size:13px;color:var(--wm);}
 
 /* ═══════════════════════════════════════════════════════
@@ -681,6 +714,164 @@ footer{
 .li-card:hover .li-in-icon{opacity:1;}
 .li-in-icon svg{width:13px;height:13px;fill:#fff;}
 .li-source{font-size:11px;color:var(--mut);margin-left:auto;margin-right:4px;}
+
+/* ═══════════════════════════════════════════════════════
+   N8N WORKFLOW TIMELINE
+═══════════════════════════════════════════════════════ */
+.wf-wrap{padding-bottom:0;}
+.wf-scroll{overflow-x:auto;overflow-y:visible;padding:0 40px 0;-webkit-overflow-scrolling:touch;}
+.wf-scroll::-webkit-scrollbar{height:5px;}
+.wf-scroll::-webkit-scrollbar-track{background:rgba(0,0,0,.06);border-radius:3px;}
+.wf-scroll::-webkit-scrollbar-thumb{background:rgba(0,0,0,.2);border-radius:3px;}
+@media(max-width:900px){#workflow{display:none!important;}}
+.wf-canvas{
+  position:relative;width:1240px;height:360px;
+  margin:0 auto;
+  background-color:#f5f5f0;
+  background-image:radial-gradient(circle,rgba(0,0,0,.09) 1px,transparent 1px);
+  background-size:24px 24px;
+  border-radius:16px;border:1px solid rgba(0,0,0,.1);
+  box-shadow:0 4px 28px rgba(0,0,0,.14),inset 0 1px 0 rgba(255,255,255,.6);
+}
+.wf-svg{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:visible;}
+
+/* NODE */
+.wf-node{
+  position:absolute;width:165px;
+  z-index:1;
+  background:#fff;border-radius:12px;
+  border:1px solid rgba(0,0,0,.09);
+  box-shadow:0 2px 10px rgba(0,0,0,.1),0 1px 3px rgba(0,0,0,.06);
+  transition:box-shadow .2s,transform .2s,border-color .2s;cursor:default;
+}
+.wf-node.wf-role-prominent .wfn-type{
+  color:#4338ca;
+  font-weight:800;
+}
+.wf-node.wf-role-prominent .wfn-name{
+  font-size:14px;
+  font-weight:800;
+}
+.wf-node:hover{box-shadow:0 8px 26px rgba(0,0,0,.14);transform:translateY(-2px);}
+.wfn-top{display:flex;align-items:center;gap:10px;padding:12px 14px 10px;}
+.wfn-badge{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+.wfn-type{font-size:8.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#4338ca;line-height:1.3;}
+.wfn-period{font-size:10.5px;font-weight:600;color:#333;margin-top:1px;}
+.wfn-name{font-size:13px;font-weight:700;color:#111;padding:7px 14px 13px;border-top:1px solid rgba(0,0,0,.06);line-height:1.3;}
+
+/* GROUP NODE (education period with sub-items) */
+.wf-node.wf-group{border-color:rgba(99,102,241,.2);background:#fdfdff;}
+.wfn-sub-nodes{padding:6px 12px 12px;border-top:1px solid rgba(0,0,0,.06);display:flex;flex-direction:column;gap:6px;}
+.wfn-sub-node{
+  display:flex;align-items:center;gap:9px;
+  background:rgba(238,242,255,.55);
+  border:1px solid rgba(99,102,241,.18);
+  border-radius:8px;padding:8px 10px;
+  transition:border-color .2s,background .2s;
+}
+.wfn-sub-badge{width:24px;height:24px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;}
+.wfn-sub-type{font-size:8px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:rgba(99,102,241,.75);}
+.wfn-sub-title{font-size:11.5px;font-weight:700;color:#111;margin-top:2px;line-height:1.2;}
+.wfn-sub-period{font-size:9px;color:#888;margin-top:2px;}
+
+/* Sub-node animation cascade */
+.wf-node.wf-run .wfn-sub-node{border-color:rgba(255,109,90,.4);background:rgba(255,109,90,.06);}
+.wf-node.wf-done .wfn-sub-node{border-color:rgba(34,197,94,.35);background:rgba(34,197,94,.07);}
+
+/* OUTPUT NODE — glowing live indicator */
+.wf-node.wf-out{
+  border:2px solid #22c55e;
+  background:linear-gradient(145deg,#f0fdf4,#dcfce7);
+  box-shadow:0 0 0 4px rgba(34,197,94,.12),0 4px 20px rgba(34,197,94,.2);
+  animation:wf-out-pulse 2.5s ease-in-out infinite alternate;
+}
+.wf-node.wf-out .wfn-type{color:#16a34a;}
+.wf-node.wf-out .wfn-period{color:#15803d;font-weight:700;}
+.wf-node.wf-out .wfn-name{color:#166534;font-size:13px;font-weight:800;border-top-color:rgba(34,197,94,.2);}
+.wf-node.wf-out:hover{transform:translateY(-3px);box-shadow:0 0 0 6px rgba(34,197,94,.18),0 8px 28px rgba(34,197,94,.28);}
+@keyframes wf-out-pulse{
+  from{box-shadow:0 0 0 3px rgba(34,197,94,.1),0 3px 14px rgba(34,197,94,.14);}
+  to  {box-shadow:0 0 0 8px rgba(34,197,94,.22),0 6px 28px rgba(34,197,94,.3);}
+}
+/* Live blinking dot */
+.wf-live-dot{
+  display:inline-block;width:6px;height:6px;
+  background:#22c55e;border-radius:50%;
+  margin-right:4px;vertical-align:middle;margin-bottom:1px;
+  animation:wf-blink 1.4s ease-in-out infinite;
+}
+@keyframes wf-blink{
+  0%,100%{opacity:1;box-shadow:0 0 0 2px rgba(34,197,94,.3);}
+  50%{opacity:.35;box-shadow:none;}
+}
+/* Parallel lane */
+.wf-parallel-lane{
+  position:absolute;
+  background:rgba(238,242,255,.45);
+  border:1.5px dashed rgba(99,102,241,.28);
+  border-radius:12px;pointer-events:none;
+}
+/* Parallel badge (override) */
+.wf-par-badge{
+  color:rgba(79,70,229,.75);
+  background:rgba(238,242,255,.95);
+  border-color:rgba(99,102,241,.25);
+}
+
+/* EXECUTION ANIMATION STATES */
+.wf-node.wf-run{
+  border:2px solid #ff6d5a !important;
+  animation:wf-pulse .5s ease-in-out infinite alternate;
+}
+.wf-node.wf-done{
+  border:2px solid #22c55e !important;
+  box-shadow:0 0 0 3px rgba(34,197,94,.18),0 6px 20px rgba(0,0,0,.1) !important;
+}
+@keyframes wf-pulse{
+  from{box-shadow:0 0 0 3px rgba(255,109,90,.15),0 6px 16px rgba(0,0,0,.1);}
+  to  {box-shadow:0 0 0 7px rgba(255,109,90,.3), 0 8px 24px rgba(0,0,0,.15);}
+}
+@keyframes wf-flow{
+  to{stroke-dashoffset:-26;}
+}
+
+/* YEAR MARKERS */
+.wf-year{
+  position:absolute;top:10px;transform:translateX(-50%);
+  font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(0,0,0,.22);pointer-events:none;
+}
+/* PARALLEL BADGE */
+.wf-par-badge{
+  position:absolute;
+  font-size:8px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+  color:rgba(0,0,0,.38);background:rgba(245,245,240,.95);
+  padding:2px 6px;border-radius:3px;border:1px solid rgba(0,0,0,.1);
+  pointer-events:none;
+}
+.wf-watermark{
+  position:absolute;bottom:12px;right:16px;
+  font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(0,0,0,.13);pointer-events:none;
+}
+
+/* EXECUTE BUTTON BAR */
+.wf-exec-bar{
+  display:flex;align-items:center;justify-content:center;
+  padding:20px 0 56px;
+}
+.wf-exec-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  background:#ea4b4b;color:#fff;
+  border:none;border-radius:6px;
+  padding:10px 22px;font-size:13px;font-weight:700;
+  cursor:pointer;font-family:inherit;
+  transition:background .15s,transform .1s,box-shadow .15s;
+  box-shadow:0 2px 10px rgba(234,75,75,.35);
+}
+.wf-exec-btn:hover{background:#d63939;transform:translateY(-1px);box-shadow:0 4px 16px rgba(234,75,75,.45);}
+.wf-exec-btn:disabled{opacity:.65;cursor:not-allowed;transform:none;box-shadow:none;}
+.wf-exec-hint{font-size:11px;color:var(--wm);}
 </style>
 </head>
 <body>
@@ -745,11 +936,12 @@ footer{
     <img src="./photo.jpg" alt="Nihildev Nandakumar" class="avatar" width="148" height="148"/>
     <div class="avail-badge">
       <span class="avail-dot" aria-hidden="true"></span>
-      Open to Senior &amp; Leadership Roles
+      Open to AI Engineering, Full-Stack &amp; Data Platform roles
     </div>
     <h1>Nihildev<br>Nandakumar</h1>
     <p class="hero-role">
-      <strong>AI Engineering Leader</strong> &middot; Data Platform Architect &middot; Published Researcher
+      <strong>AI Engineer building full-stack data products</strong>
+      <span class="hero-role-sub">Published NLP researcher &middot; Berlin</span>
     </p>
     <p class="hero-desc">
       From a 50-day founding sprint that closed a €500K seed round
@@ -791,6 +983,15 @@ footer{
   <div class="hero-glow" aria-hidden="true"></div>
 </section>
 
+<!-- ── WHAT I'M LOOKING FOR ── -->
+<section class="looking-sec" id="looking" aria-labelledby="looking-heading">
+  <div class="looking-card fi">
+    <div class="looking-ey" id="looking-heading">What I&rsquo;m looking for</div>
+    <p class="looking-roles">AI Engineer &middot; Full-Stack Engineer &middot; Data Platform Engineer &middot; Analytics Engineer</p>
+    <p class="looking-loc">Berlin preferred &middot; Germany / EU / Remote</p>
+  </div>
+</section>
+
 <!-- ── ABOUT ── -->
 <section class="sec s1" id="about">
   <div class="inner">
@@ -801,10 +1002,10 @@ footer{
     <div class="about-layout fi d1">
       <div class="about-story">
         <p>
-          I started writing software in Chennai, migrated legacy websites to the MERN stack, and visualised IPL cricket data in Tableau. That led to Munich — an M.Sc. at TUM, where four years of NLP research on <strong>differential privacy in language models</strong> ended up peer-reviewed and published at <strong>LREC-COLING 2024</strong>. Then Berlin: Infineon Technologies, where I ran NLP models and BI platforms for 100+ employees; Asgoodasnew, where I built ML pricing that moved margins; and finally PLACED, where I joined as <strong>Founding Engineer</strong> and shipped an AI talent-matching platform from blank repo to 1,000+ early adopters in 50 days — helping close a €500K seed round.
+          I started writing software in Chennai, migrated legacy websites to the MERN stack, and visualised IPL cricket data in Tableau. That led to Munich — an M.Sc. at TUM, where four years of NLP research on <strong>differential privacy in language models</strong> ended up peer-reviewed and published at <strong>LREC-COLING 2024</strong>. Then Berlin: Infineon Technologies, where I ran NLP models and BI platforms for 100+ employees; Asgoodasnew, where I built ML pricing that moved margins; and finally PLACED, where I joined as <strong>Founding Engineer</strong> at an AI talent-matching startup — launched the founding product to early adopters in 50 days and helped close a €500K seed round.
         </p>
         <p>
-          I'm looking for a senior or leadership role where I can architect AI systems that scale, lead teams that care about craft, and drive outcomes that show up in the numbers. Based in <strong>Berlin</strong>. Open to remote or hybrid across Europe. Let's talk.
+          I&rsquo;m open to <strong>AI Engineer</strong>, <strong>Full-Stack Engineer</strong>, <strong>Data Platform Engineer</strong>, and <strong>Analytics Engineer</strong> roles — building systems that scale, ship, and show up in the numbers. Based in <strong>Berlin</strong>; open to Germany, EU, and remote. Let&rsquo;s talk.
         </p>
       </div>
       <aside class="about-aside">
@@ -910,7 +1111,7 @@ footer{
       <div class="term-body">
         <span class="tl"><span class="tp">~</span> <span class="tc">nihildev --status</span></span>
         <span class="tblank"></span>
-        <span class="tl"><span class="tk">Available</span> <span class="tg">✓ Open to Senior &amp; AI Leadership Roles</span></span>
+        <span class="tl"><span class="tk">Available</span> <span class="tg">✓ AI Engineer · Full-Stack · Data Platform · Analytics</span></span>
         <span class="tl"><span class="tk">Location</span> <span class="tv">Berlin, Germany · EU Remote OK</span></span>
         <span class="tl"><span class="tk">Stack</span> <span class="tv">Python · TypeScript · FastAPI · pgvector · LLMs</span></span>
         <span class="tl"><span class="tk">Published</span> <span class="tv">LREC-COLING 2024 · Differential Privacy in NLP</span></span>
@@ -1005,7 +1206,7 @@ footer{
     <div class="metrics-top">
       <div class="mc">
         <div class="mn" data-count="50" data-suffix="">50</div>
-        <div class="ml">Days: zero to<br>1,000+ adopters</div>
+        <div class="ml">Days: founding MVP<br>to early adopters</div>
       </div>
       <div class="mc">
         <div class="mn" data-count="95" data-suffix="%">95%</div>
@@ -1041,6 +1242,130 @@ footer{
   </div>
 </section>
 
+<!-- ── N8N WORKFLOW TIMELINE ── -->
+<section class="sec s1 wf-wrap" id="workflow">
+  <div class="inner">
+    <div class="fi">
+      <div class="ey">n8n-style</div>
+      <h2 class="ht">13 years of learning, building, and growing in tech.<br><em>One discipline: building what matters.</em></h2>
+    </div>
+  </div>
+  <div class="wf-scroll">
+    <div class="wf-canvas" id="wf-canvas">
+      <svg class="wf-svg" id="wf-svg" aria-hidden="true"></svg>
+
+      <!-- Year spine — row 1 -->
+      <div class="wf-year" style="left:112px;">2013</div>
+      <div class="wf-year" style="left:315px;">2017</div>
+      <div class="wf-year" style="left:518px;">2019</div>
+      <div class="wf-year" style="left:721px;">2023</div>
+      <div class="wf-year" style="left:924px;">2025</div>
+      <div class="wf-year" style="left:1127px;">Now</div>
+
+      <!-- During M.Sc. annotation -->
+      <div class="wf-par-badge" style="left:437px;top:160px;">&#8964; during M.Sc. · Munich</div>
+
+      <!-- ── ROW 1: main career flow ── -->
+      <div class="wf-node" id="wf-n1" style="left:30px;top:38px;">
+        <div class="wfn-top">
+          <div class="wfn-badge" style="background:#fef9c3;">🎓</div>
+          <div>
+            <div class="wfn-type">Education</div>
+            <div class="wfn-period">2013 – 2017</div>
+          </div>
+        </div>
+        <div class="wfn-name">B.Tech — Computer Science</div>
+      </div>
+
+      <div class="wf-node" id="wf-n2" style="left:233px;top:38px;">
+        <div class="wfn-top">
+          <div class="wfn-badge" style="background:#fff7ed;">💻</div>
+          <div>
+            <div class="wfn-type">Software Engineer</div>
+            <div class="wfn-period">2017 – 2019</div>
+          </div>
+        </div>
+        <div class="wfn-name">SportsMechanics India</div>
+      </div>
+
+      <div class="wf-node" id="wf-n3" style="left:436px;top:38px;">
+        <div class="wfn-top">
+          <div class="wfn-badge" style="background:#ede9fe;">🏛️</div>
+          <div>
+            <div class="wfn-type">Education</div>
+            <div class="wfn-period">2019 – 2023</div>
+          </div>
+        </div>
+        <div class="wfn-name">M.Sc. Informatics · TUM</div>
+      </div>
+
+      <div class="wf-node" id="wf-n6" style="left:639px;top:38px;">
+        <div class="wfn-top">
+          <div class="wfn-badge" style="background:#e0f2fe;">📊</div>
+          <div>
+            <div class="wfn-type">Web &amp; Data Specialist</div>
+            <div class="wfn-period">2023 – 2025</div>
+          </div>
+        </div>
+        <div class="wfn-name">Asgoodasnew Electronics</div>
+      </div>
+
+      <div class="wf-node wf-role-prominent" id="wf-n7" style="left:842px;top:38px;">
+        <div class="wfn-top">
+          <div class="wfn-badge" style="background:#fee2e2;">🚀</div>
+          <div>
+            <div class="wfn-type">Founding Engineer</div>
+            <div class="wfn-period">2025</div>
+          </div>
+        </div>
+        <div class="wfn-name">PLACED · AI/HR-Tech</div>
+      </div>
+
+      <div class="wf-node" id="wf-n8" style="left:1045px;top:38px;">
+        <div class="wfn-top">
+          <div class="wfn-badge" style="background:#bbf7d0;font-size:16px;">✅</div>
+          <div>
+            <div class="wfn-type"><span class="wf-live-dot"></span>OPEN TO WORK</div>
+            <div class="wfn-period">Berlin · Remote / Hybrid</div>
+          </div>
+        </div>
+        <div class="wfn-name">AI / Full-Stack / Data Platform</div>
+      </div>
+
+      <!-- ── ROW 2: during M.Sc. period (below TUM → Asgoodasnew) ── -->
+      <div class="wf-node" id="wf-n4" style="left:436px;top:215px;">
+        <div class="wfn-top">
+          <div class="wfn-badge" style="background:#dbeafe;">📈</div>
+          <div>
+            <div class="wfn-type">Data Analyst</div>
+            <div class="wfn-period">2019 – 2023</div>
+          </div>
+        </div>
+        <div class="wfn-name">Infineon Technologies</div>
+      </div>
+
+      <div class="wf-node" id="wf-n5" style="left:639px;top:215px;">
+        <div class="wfn-top">
+          <div class="wfn-badge" style="background:#f3e8ff;">🧠</div>
+          <div>
+            <div class="wfn-type">Master Thesis</div>
+            <div class="wfn-period">LREC-COLING 2024</div>
+          </div>
+        </div>
+        <div class="wfn-name">NLP Privacy Thesis</div>
+      </div>
+
+      <div class="wf-watermark">n8n workflow</div>
+    </div>
+  </div>
+  <div class="wf-exec-bar">
+    <button class="wf-exec-btn" id="wf-exec-btn">
+      <svg width="11" height="11" viewBox="0 0 10 10" fill="currentColor" aria-hidden="true"><path d="M2 1.5l7 3.5-7 3.5V1.5z"/></svg>
+      Execute workflow
+    </button>
+  </div>
+</section>
+
 <!-- ── EXPERIENCE TIMELINE ── -->
 <section class="sec s1" id="experience">
   <div class="inner">
@@ -1064,7 +1389,7 @@ footer{
           <span class="tl-badge st">Startup · AI / HR-Tech</span>
         </div>
         <ul class="tl-bul">
-          <li><strong>50-day MVP sprint:</strong> <span>Used AI-first development (Copilot + Cursor) to go from zero to 1,000+ early adopters — the fastest product launch of my career.</span></li>
+          <li><strong>50-day founding sprint:</strong> <span>Shipped the startup MVP and onboarded early adopters with AI-first development (Copilot + Cursor) — the fastest product launch of my career.</span></li>
           <li><strong>Agentic matching pipeline:</strong> <span>Multi-context LLM orchestration reaching 100K+ evaluations per day at sub-second latency on AWS.</span></li>
           <li><strong>€500K seed round:</strong> <span>Technical demonstrations were the centrepiece of the fundraise. Owned the full stack: Python/FastAPI backend + TypeScript/React frontend + CI/CD.</span></li>
         </ul>
@@ -1357,8 +1682,9 @@ footer{
       <a class="cb-p" href="mailto:nihildev.nandakumar@gmail.com" aria-label="Email Nihildev">
         ✉ nihildev.nandakumar@gmail.com
       </a>
-      <a class="cb-s" href="https://linkedin.com/in/nihildev" target="_blank" rel="noopener" aria-label="LinkedIn profile">
-        ↗ LinkedIn
+      <a class="cb-qr" href="https://linkedin.com/in/nihildev" target="_blank" rel="noopener" aria-label="LinkedIn profile — scan QR to connect">
+        <img src="./QR.JPG" alt="LinkedIn QR code" loading="lazy">
+        <span>LinkedIn</span>
       </a>
       <!-- Place compiled CV at ./Nihildev_Nandakumar_CV.pdf -->
       <a class="cb-dl" href="./Nihildev_Nandakumar_CV.pdf" target="_blank" rel="noopener" aria-label="Download CV as PDF">
@@ -1372,7 +1698,7 @@ footer{
 <!-- ── FOOTER ── -->
 <footer>
   <div class="fn">
-    <strong>Nihildev Nandakumar</strong> · AI Engineering Leader &amp; Researcher · Berlin
+    <strong>Nihildev Nandakumar</strong> · AI Engineer &amp; Researcher · Berlin
   </div>
   <div class="fl">
     <a href="https://linkedin.com/in/nihildev" target="_blank" rel="noopener" aria-label="LinkedIn">LinkedIn</a>
@@ -1468,6 +1794,157 @@ const counterObs = new IntersectionObserver(entries => {
 }, { threshold: 0.6 });
 
 document.querySelectorAll('[data-count]').forEach(el => counterObs.observe(el));
+
+/* ── N8N WORKFLOW CONNECTIONS + ANIMATION ── */
+function drawWfConnections() {
+  const canvas = document.getElementById('wf-canvas');
+  const svg    = document.getElementById('wf-svg');
+  if (!canvas || !svg) return;
+
+  svg.innerHTML = '';
+  const W = canvas.offsetWidth, H = canvas.offsetHeight;
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+
+  /* Arrowhead markers */
+  const defs = document.createElementNS('http://www.w3.org/2000/svg','defs');
+  defs.innerHTML = `
+    <marker id="wfa"  markerWidth="10" markerHeight="10" refX="8" refY="3.5" orient="auto"><path d="M0,0.5 L0,6.5 L9,3.5 z" fill="#b0b0b0"/></marker>
+    <marker id="wfa-r" markerWidth="10" markerHeight="10" refX="8" refY="3.5" orient="auto"><path d="M0,0.5 L0,6.5 L9,3.5 z" fill="#ff6d5a"/></marker>
+    <marker id="wfa-g" markerWidth="10" markerHeight="10" refX="8" refY="3.5" orient="auto"><path d="M0,0.5 L0,6.5 L9,3.5 z" fill="#22c55e"/></marker>`;
+  svg.appendChild(defs);
+
+  /* Mixed horizontal + vertical connections */
+  const conns = [
+    { from:'wf-n1', fE:'right',  to:'wf-n2', tE:'left'   },
+    { from:'wf-n2', fE:'right',  to:'wf-n3', tE:'left'   },
+    { from:'wf-n3', fE:'right',  to:'wf-n6', tE:'left'   },
+    { from:'wf-n3', fE:'bottom', to:'wf-n4', tE:'top'    },
+    { from:'wf-n4', fE:'right',  to:'wf-n5', tE:'left'   },
+    { from:'wf-n6', fE:'right',  to:'wf-n7', tE:'left'   },
+    { from:'wf-n7', fE:'right',  to:'wf-n8', tE:'left'   },
+  ];
+
+  function pt(el, edge) {
+    const x=el.offsetLeft, y=el.offsetTop, w=el.offsetWidth, h=el.offsetHeight;
+    return { right:[x+w,y+h/2], left:[x,y+h/2], bottom:[x+w/2,y+h], top:[x+w/2,y] }[edge];
+  }
+
+  conns.forEach(c => {
+    const fEl = document.getElementById(c.from);
+    const tEl = document.getElementById(c.to);
+    if (!fEl || !tEl) return;
+
+    const [x1,y1] = pt(fEl, c.fE);
+    const [x2,y2] = pt(tEl, c.tE);
+    const off = Math.min(55, Math.max(Math.abs(x2-x1), Math.abs(y2-y1))*0.42);
+
+    const pathId = `wf-path-${c.from.slice(3)}-${c.to.slice(3)}`;
+    const path = document.createElementNS('http://www.w3.org/2000/svg','path');
+    path.setAttribute('id', pathId);
+    const horiz = (c.fE==='right'||c.fE==='left');
+    const d = horiz
+      ? `M${x1},${y1} C${x1+off},${y1} ${x2-off},${y2} ${x2},${y2}`
+      : `M${x1},${y1} C${x1},${y1+off} ${x2},${y2-off} ${x2},${y2}`;
+    path.setAttribute('d', d);
+    path.setAttribute('fill','none');
+    path.setAttribute('stroke','#b8b8b8');
+    path.setAttribute('stroke-width','2.5');
+    path.setAttribute('marker-end','url(#wfa)');
+    svg.appendChild(path);
+
+    /* Output port */
+    const outC = document.createElementNS('http://www.w3.org/2000/svg','circle');
+    outC.setAttribute('cx',x1); outC.setAttribute('cy',y1);
+    outC.setAttribute('r','5.5'); outC.setAttribute('fill','#fff');
+    outC.setAttribute('stroke','#b8b8b8'); outC.setAttribute('stroke-width','2');
+    svg.appendChild(outC);
+    const outD = document.createElementNS('http://www.w3.org/2000/svg','circle');
+    outD.setAttribute('cx',x1); outD.setAttribute('cy',y1);
+    outD.setAttribute('r','2.5'); outD.setAttribute('fill','#b8b8b8');
+    svg.appendChild(outD);
+
+    /* Input port */
+    const inC = document.createElementNS('http://www.w3.org/2000/svg','circle');
+    inC.setAttribute('cx',x2); inC.setAttribute('cy',y2);
+    inC.setAttribute('r','4.5'); inC.setAttribute('fill','#f5f5f0');
+    inC.setAttribute('stroke','#b8b8b8'); inC.setAttribute('stroke-width','2');
+    svg.appendChild(inC);
+  });
+}
+
+/* ── EXECUTE WORKFLOW ANIMATION ── */
+function runWorkflow() {
+  document.querySelectorAll('.wf-node').forEach(n => n.classList.remove('wf-run','wf-done','wf-out'));
+  document.querySelectorAll('#wf-svg path[id]').forEach(p => {
+    p.setAttribute('stroke','#b8b8b8');
+    p.setAttribute('marker-end','url(#wfa)');
+    p.style.animation=''; p.style.strokeDasharray=''; p.style.strokeDashoffset='';
+  });
+  /* Reset port dot colors */
+  document.querySelectorAll('#wf-svg circle').forEach(c => {
+    if (c.getAttribute('r')==='2.5') c.setAttribute('fill','#b8b8b8');
+    else if (c.getAttribute('r')==='5.5') { c.setAttribute('stroke','#b8b8b8'); }
+    else if (c.getAttribute('r')==='4.5') { c.setAttribute('stroke','#b8b8b8'); }
+  });
+
+  const btn = document.getElementById('wf-exec-btn');
+  btn.disabled = true;
+  btn.innerHTML = '<svg width="11" height="11" viewBox="0 0 10 10" fill="currentColor"><rect x="2" y="1.5" width="2.5" height="7" rx="1"/><rect x="5.5" y="1.5" width="2.5" height="7" rx="1"/></svg> Still building...';
+
+  const seq = [
+    { node:'wf-n1', path:null,              delay:0    },
+    { node:'wf-n2', path:'wf-path-n1-n2',  delay:600  },
+    { node:'wf-n3', path:'wf-path-n2-n3',  delay:1200 },
+    { node:'wf-n4', path:'wf-path-n3-n4',  delay:1800 },
+    { node:'wf-n5', path:'wf-path-n4-n5',  delay:2400 },
+    { node:'wf-n6', path:'wf-path-n3-n6',  delay:3000 },
+    { node:'wf-n7', path:'wf-path-n6-n7',  delay:3600 },
+    { node:'wf-n8', path:'wf-path-n7-n8',  delay:4200 },
+  ];
+
+  seq.forEach(step => {
+    setTimeout(() => {
+      if (step.path) {
+        const p = document.getElementById(step.path);
+        if (p) {
+          p.setAttribute('stroke','#ff6d5a');
+          p.setAttribute('marker-end','url(#wfa-r)');
+          p.style.strokeDasharray = '8 5';
+          p.style.animation = 'wf-flow .45s linear infinite';
+        }
+      }
+      const node = document.getElementById(step.node);
+      if (node) node.classList.add('wf-run');
+
+      setTimeout(() => {
+        if (node) { node.classList.remove('wf-run'); node.classList.add('wf-done'); }
+        if (step.node === 'wf-n8' && node) node.classList.add('wf-out');
+        if (step.path) {
+          const p = document.getElementById(step.path);
+          if (p) {
+            p.setAttribute('stroke','#22c55e');
+            p.setAttribute('marker-end','url(#wfa-g)');
+            p.style.animation=''; p.style.strokeDasharray='';
+          }
+        }
+      }, 550);
+    }, step.delay);
+  });
+
+  setTimeout(() => {
+    btn.disabled = false;
+    btn.innerHTML = '<svg width="11" height="11" viewBox="0 0 10 10" fill="currentColor"><path d="M2 1.5l7 3.5-7 3.5V1.5z"/></svg> Execute workflow';
+  }, 5200);
+}
+
+document.getElementById('wf-exec-btn')?.addEventListener('click', runWorkflow);
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', drawWfConnections);
+} else {
+  drawWfConnections();
+}
+window.addEventListener('resize', drawWfConnections);
 </script>
 </body>
 </html>
