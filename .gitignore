@@ -1,4 +1,5 @@
 .DS_Store
+.gif_frames/
 *.pdf
 !Nihildev_Nandakumar_CV.pdf
 *.tex
