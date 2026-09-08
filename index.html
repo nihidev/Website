@@ -719,13 +719,13 @@ footer{
    N8N WORKFLOW TIMELINE
 ═══════════════════════════════════════════════════════ */
 .wf-wrap{padding-bottom:0;}
-.wf-scroll{overflow-x:auto;overflow-y:visible;padding:0 40px 0;-webkit-overflow-scrolling:touch;}
+.wf-scroll{overflow-x:auto;overflow-y:visible;padding:0 24px 0;-webkit-overflow-scrolling:touch;}
 .wf-scroll::-webkit-scrollbar{height:5px;}
 .wf-scroll::-webkit-scrollbar-track{background:rgba(0,0,0,.06);border-radius:3px;}
 .wf-scroll::-webkit-scrollbar-thumb{background:rgba(0,0,0,.2);border-radius:3px;}
 @media(max-width:900px){#workflow{display:none!important;}}
 .wf-canvas{
-  position:relative;width:1240px;height:360px;
+  position:relative;width:1120px;height:360px;
   margin:0 auto;
   background-color:#f5f5f0;
   background-image:radial-gradient(circle,rgba(0,0,0,.09) 1px,transparent 1px);
@@ -737,13 +737,15 @@ footer{
 
 /* NODE */
 .wf-node{
-  position:absolute;width:165px;
+  position:absolute;width:152px;min-height:121px;
   z-index:1;
   background:#fff;border-radius:12px;
   border:1px solid rgba(0,0,0,.09);
   box-shadow:0 2px 10px rgba(0,0,0,.1),0 1px 3px rgba(0,0,0,.06);
   transition:box-shadow .2s,transform .2s,border-color .2s;cursor:default;
+  display:flex;flex-direction:column;
 }
+.wf-node .wfn-name{margin-top:auto;}
 .wf-node.wf-role-prominent .wfn-type{
   color:#4338ca;
   font-weight:800;
@@ -753,11 +755,18 @@ footer{
   font-weight:800;
 }
 .wf-node:hover{box-shadow:0 8px 26px rgba(0,0,0,.14);transform:translateY(-2px);}
-.wfn-top{display:flex;align-items:center;gap:10px;padding:12px 14px 10px;}
-.wfn-badge{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
-.wfn-type{font-size:8.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#4338ca;line-height:1.3;}
-.wfn-period{font-size:10.5px;font-weight:600;color:#333;margin-top:1px;}
-.wfn-name{font-size:13px;font-weight:700;color:#111;padding:7px 14px 13px;border-top:1px solid rgba(0,0,0,.06);line-height:1.3;}
+.wfn-top{display:flex;align-items:flex-start;gap:8px;padding:11px 12px 9px;}
+.wfn-badge{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;margin-top:1px;overflow:hidden;}
+.wfn-badge img{width:100%;height:100%;object-fit:cover;display:block;}
+.wfn-type{font-size:8px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#4338ca;line-height:1.25;}
+.wfn-subrole{font-size:8px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#4338ca;line-height:1.25;margin-top:1px;}
+.wfn-period{font-size:10px;font-weight:600;color:#333;margin-top:1px;}
+.wfn-name{font-size:12px;font-weight:700;color:#111;padding:6px 12px 11px;border-top:1px solid rgba(0,0,0,.06);line-height:1.25;}
+#wf-n1 .wfn-name{font-size:10.5px;letter-spacing:-0.01em;line-height:1.2;}
+#wf-n8 .wfn-top{padding:10px 12px 8px;gap:8px;}
+#wf-n8 .wfn-type,#wf-n8 .wfn-subrole{font-size:8px;letter-spacing:.05em;line-height:1.2;}
+#wf-n8 .wfn-period{font-size:10px;margin-top:0;}
+#wf-n8 .wfn-name{padding:6px 12px 10px;font-size:13px;}
 
 /* GROUP NODE (education period with sub-items) */
 .wf-node.wf-group{border-color:rgba(99,102,241,.2);background:#fdfdff;}
@@ -778,20 +787,20 @@ footer{
 .wf-node.wf-run .wfn-sub-node{border-color:rgba(255,109,90,.4);background:rgba(255,109,90,.06);}
 .wf-node.wf-done .wfn-sub-node{border-color:rgba(34,197,94,.35);background:rgba(34,197,94,.07);}
 
-/* OUTPUT NODE — glowing live indicator */
-.wf-node.wf-out{
-  border:2px solid #22c55e;
-  background:linear-gradient(145deg,#f0fdf4,#dcfce7);
-  box-shadow:0 0 0 4px rgba(34,197,94,.12),0 4px 20px rgba(34,197,94,.2);
-  animation:wf-out-pulse 2.5s ease-in-out infinite alternate;
+/* CURRENT ROLE — Holidu destination highlight */
+.wf-node.wf-current{
+  border:2px solid #46839a !important;
+  background:linear-gradient(145deg,#fff,#f0f7fa);
+  box-shadow:0 0 0 4px rgba(70,131,154,.14),0 4px 20px rgba(70,131,154,.22) !important;
+  animation:wf-current-pulse 2.4s ease-in-out infinite alternate;
 }
-.wf-node.wf-out .wfn-type{color:#16a34a;}
-.wf-node.wf-out .wfn-period{color:#15803d;font-weight:700;}
-.wf-node.wf-out .wfn-name{color:#166534;font-size:13px;font-weight:800;border-top-color:rgba(34,197,94,.2);}
-.wf-node.wf-out:hover{transform:translateY(-3px);box-shadow:0 0 0 6px rgba(34,197,94,.18),0 8px 28px rgba(34,197,94,.28);}
-@keyframes wf-out-pulse{
-  from{box-shadow:0 0 0 3px rgba(34,197,94,.1),0 3px 14px rgba(34,197,94,.14);}
-  to  {box-shadow:0 0 0 8px rgba(34,197,94,.22),0 6px 28px rgba(34,197,94,.3);}
+.wf-node.wf-current .wfn-type,
+.wf-node.wf-current .wfn-subrole{color:#2f5f70;}
+.wf-node.wf-current .wfn-name{color:#1e4654;border-top-color:rgba(70,131,154,.22);}
+.wf-node.wf-current:hover{transform:translateY(-3px);box-shadow:0 0 0 6px rgba(70,131,154,.2),0 8px 28px rgba(70,131,154,.28) !important;}
+@keyframes wf-current-pulse{
+  from{box-shadow:0 0 0 3px rgba(70,131,154,.1),0 3px 14px rgba(70,131,154,.14);}
+  to  {box-shadow:0 0 0 8px rgba(70,131,154,.22),0 6px 28px rgba(70,131,154,.28);}
 }
 /* Live blinking dot */
 .wf-live-dot{
@@ -1255,20 +1264,22 @@ footer{
       <svg class="wf-svg" id="wf-svg" aria-hidden="true"></svg>
 
       <!-- Year spine — row 1 -->
-      <div class="wf-year" style="left:112px;">2013</div>
-      <div class="wf-year" style="left:315px;">2017</div>
-      <div class="wf-year" style="left:518px;">2019</div>
-      <div class="wf-year" style="left:721px;">2023</div>
-      <div class="wf-year" style="left:924px;">2025</div>
-      <div class="wf-year" style="left:1127px;">Now</div>
+      <div class="wf-year" style="left:96px;">2013</div>
+      <div class="wf-year" style="left:278px;">2017</div>
+      <div class="wf-year" style="left:460px;">2019</div>
+      <div class="wf-year" style="left:642px;">2023</div>
+      <div class="wf-year" style="left:824px;">2025</div>
+      <div class="wf-year" style="left:1006px;">2026</div>
 
       <!-- During M.Sc. annotation -->
-      <div class="wf-par-badge" style="left:437px;top:160px;">&#8964; during M.Sc. · Munich</div>
+      <div class="wf-par-badge" style="left:384px;top:160px;">&#8964; during M.Sc. · Munich</div>
 
       <!-- ── ROW 1: main career flow ── -->
-      <div class="wf-node" id="wf-n1" style="left:30px;top:38px;">
+      <div class="wf-node" id="wf-n1" style="left:20px;top:38px;">
         <div class="wfn-top">
-          <div class="wfn-badge" style="background:#fef9c3;">🎓</div>
+          <div class="wfn-badge" style="background:#fff;padding:0;border:1px solid rgba(0,0,0,.08);">
+            <img src="assets/srm-logo.png" alt="SRM" width="34" height="34" style="object-fit:contain;padding:2px;box-sizing:border-box;">
+          </div>
           <div>
             <div class="wfn-type">Education</div>
             <div class="wfn-period">2013 – 2017</div>
@@ -1277,9 +1288,11 @@ footer{
         <div class="wfn-name">B.Tech — Computer Science</div>
       </div>
 
-      <div class="wf-node" id="wf-n2" style="left:233px;top:38px;">
+      <div class="wf-node" id="wf-n2" style="left:202px;top:38px;">
         <div class="wfn-top">
-          <div class="wfn-badge" style="background:#fff7ed;">💻</div>
+          <div class="wfn-badge" style="background:#6b2dff;padding:0;">
+            <img src="assets/sportsmechanics-logo.png" alt="SportsMechanics" width="34" height="34">
+          </div>
           <div>
             <div class="wfn-type">Software Engineer</div>
             <div class="wfn-period">2017 – 2019</div>
@@ -1288,9 +1301,11 @@ footer{
         <div class="wfn-name">SportsMechanics India</div>
       </div>
 
-      <div class="wf-node" id="wf-n3" style="left:436px;top:38px;">
+      <div class="wf-node" id="wf-n3" style="left:384px;top:38px;">
         <div class="wfn-top">
-          <div class="wfn-badge" style="background:#ede9fe;">🏛️</div>
+          <div class="wfn-badge" style="background:#0065BD;padding:0;">
+            <img src="assets/tum-logo.png" alt="TUM" width="34" height="34">
+          </div>
           <div>
             <div class="wfn-type">Education</div>
             <div class="wfn-period">2019 – 2023</div>
@@ -1299,9 +1314,11 @@ footer{
         <div class="wfn-name">M.Sc. Informatics · TUM</div>
       </div>
 
-      <div class="wf-node" id="wf-n6" style="left:639px;top:38px;">
+      <div class="wf-node" id="wf-n6" style="left:566px;top:38px;">
         <div class="wfn-top">
-          <div class="wfn-badge" style="background:#e0f2fe;">📊</div>
+          <div class="wfn-badge" style="background:#2a2a2a;padding:0;">
+            <img src="assets/asgoodasnew-logo.png" alt="Asgoodasnew" width="34" height="34">
+          </div>
           <div>
             <div class="wfn-type">Web &amp; Data Specialist</div>
             <div class="wfn-period">2023 – 2025</div>
@@ -1310,9 +1327,11 @@ footer{
         <div class="wfn-name">Asgoodasnew Electronics</div>
       </div>
 
-      <div class="wf-node wf-role-prominent" id="wf-n7" style="left:842px;top:38px;">
+      <div class="wf-node wf-role-prominent" id="wf-n7" style="left:748px;top:38px;">
         <div class="wfn-top">
-          <div class="wfn-badge" style="background:#fee2e2;">🚀</div>
+          <div class="wfn-badge" style="background:#0a1628;padding:0;">
+            <img src="assets/placed-logo.png" alt="PLACED" width="34" height="34">
+          </div>
           <div>
             <div class="wfn-type">Founding Engineer</div>
             <div class="wfn-period">2025</div>
@@ -1321,21 +1340,26 @@ footer{
         <div class="wfn-name">PLACED · AI/HR-Tech</div>
       </div>
 
-      <div class="wf-node" id="wf-n8" style="left:1045px;top:38px;">
+      <div class="wf-node wf-role-prominent" id="wf-n8" style="left:930px;top:38px;">
         <div class="wfn-top">
-          <div class="wfn-badge" style="background:#bbf7d0;font-size:16px;">✅</div>
+          <div class="wfn-badge" style="background:#46839a;padding:0;">
+            <img src="assets/holidu-logo.png" alt="Holidu" width="34" height="34">
+          </div>
           <div>
-            <div class="wfn-type"><span class="wf-live-dot"></span>OPEN TO WORK</div>
-            <div class="wfn-period">Berlin · Remote / Hybrid</div>
+            <div class="wfn-type">AI Engineer</div>
+            <div class="wfn-subrole">GTM</div>
+            <div class="wfn-period">2026</div>
           </div>
         </div>
-        <div class="wfn-name">AI / Full-Stack / Data Platform</div>
+        <div class="wfn-name">HOLIDU</div>
       </div>
 
       <!-- ── ROW 2: during M.Sc. period (below TUM → Asgoodasnew) ── -->
-      <div class="wf-node" id="wf-n4" style="left:436px;top:215px;">
+      <div class="wf-node" id="wf-n4" style="left:384px;top:215px;">
         <div class="wfn-top">
-          <div class="wfn-badge" style="background:#dbeafe;">📈</div>
+          <div class="wfn-badge" style="background:#fff;padding:0;border:1px solid rgba(0,0,0,.08);">
+            <img src="assets/infineon-logo.png" alt="Infineon" width="34" height="34" style="object-fit:contain;padding:3px;box-sizing:border-box;">
+          </div>
           <div>
             <div class="wfn-type">Data Analyst</div>
             <div class="wfn-period">2019 – 2023</div>
@@ -1344,9 +1368,11 @@ footer{
         <div class="wfn-name">Infineon Technologies</div>
       </div>
 
-      <div class="wf-node" id="wf-n5" style="left:639px;top:215px;">
+      <div class="wf-node" id="wf-n5" style="left:566px;top:215px;">
         <div class="wfn-top">
-          <div class="wfn-badge" style="background:#f3e8ff;">🧠</div>
+          <div class="wfn-badge" style="background:#0065BD;padding:0;">
+            <img src="assets/tum-logo.png" alt="TUM" width="34" height="34">
+          </div>
           <div>
             <div class="wfn-type">Master Thesis</div>
             <div class="wfn-period">LREC-COLING 2024</div>
@@ -1359,7 +1385,7 @@ footer{
     </div>
   </div>
   <div class="wf-exec-bar">
-    <button class="wf-exec-btn" id="wf-exec-btn">
+    <button type="button" class="wf-exec-btn" id="wf-exec-btn" aria-label="Execute career workflow animation">
       <svg width="11" height="11" viewBox="0 0 10 10" fill="currentColor" aria-hidden="true"><path d="M2 1.5l7 3.5-7 3.5V1.5z"/></svg>
       Execute workflow
     </button>
@@ -1873,37 +1899,70 @@ function drawWfConnections() {
 }
 
 /* ── EXECUTE WORKFLOW ANIMATION ── */
+let wfTimers = [];
+
+function wfClearTimers() {
+  wfTimers.forEach(clearTimeout);
+  wfTimers = [];
+}
+
+function wfLater(fn, ms) {
+  const id = setTimeout(fn, ms);
+  wfTimers.push(id);
+  return id;
+}
+
 function runWorkflow() {
-  document.querySelectorAll('.wf-node').forEach(n => n.classList.remove('wf-run','wf-done','wf-out'));
+  const btn = document.getElementById('wf-exec-btn');
+  if (!btn || btn.disabled) return;
+
+  wfClearTimers();
+  drawWfConnections();
+
+  document.querySelectorAll('.wf-node').forEach(n => n.classList.remove('wf-run','wf-done','wf-current','wf-out'));
   document.querySelectorAll('#wf-svg path[id]').forEach(p => {
     p.setAttribute('stroke','#b8b8b8');
     p.setAttribute('marker-end','url(#wfa)');
     p.style.animation=''; p.style.strokeDasharray=''; p.style.strokeDashoffset='';
   });
-  /* Reset port dot colors */
   document.querySelectorAll('#wf-svg circle').forEach(c => {
     if (c.getAttribute('r')==='2.5') c.setAttribute('fill','#b8b8b8');
-    else if (c.getAttribute('r')==='5.5') { c.setAttribute('stroke','#b8b8b8'); }
-    else if (c.getAttribute('r')==='4.5') { c.setAttribute('stroke','#b8b8b8'); }
+    else if (c.getAttribute('r')==='5.5' || c.getAttribute('r')==='4.5') c.setAttribute('stroke','#b8b8b8');
   });
 
-  const btn = document.getElementById('wf-exec-btn');
   btn.disabled = true;
-  btn.innerHTML = '<svg width="11" height="11" viewBox="0 0 10 10" fill="currentColor"><rect x="2" y="1.5" width="2.5" height="7" rx="1"/><rect x="5.5" y="1.5" width="2.5" height="7" rx="1"/></svg> Still building...';
+  btn.innerHTML = '<svg width="11" height="11" viewBox="0 0 10 10" fill="currentColor" aria-hidden="true"><rect x="2" y="1.5" width="2.5" height="7" rx="1"/><rect x="5.5" y="1.5" width="2.5" height="7" rx="1"/></svg> Executing...';
 
   const seq = [
-    { node:'wf-n1', path:null,              delay:0    },
-    { node:'wf-n2', path:'wf-path-n1-n2',  delay:600  },
-    { node:'wf-n3', path:'wf-path-n2-n3',  delay:1200 },
-    { node:'wf-n4', path:'wf-path-n3-n4',  delay:1800 },
-    { node:'wf-n5', path:'wf-path-n4-n5',  delay:2400 },
-    { node:'wf-n6', path:'wf-path-n3-n6',  delay:3000 },
-    { node:'wf-n7', path:'wf-path-n6-n7',  delay:3600 },
-    { node:'wf-n8', path:'wf-path-n7-n8',  delay:4200 },
+    { node:'wf-n1', path:null,             delay:0    },
+    { node:'wf-n2', path:'wf-path-n1-n2', delay:550  },
+    { node:'wf-n3', path:'wf-path-n2-n3', delay:1100 },
+    { node:'wf-n4', path:'wf-path-n3-n4', delay:1650 },
+    { node:'wf-n5', path:'wf-path-n4-n5', delay:2200 },
+    { node:'wf-n6', path:'wf-path-n3-n6', delay:2750 },
+    { node:'wf-n7', path:'wf-path-n6-n7', delay:3300 },
+    { node:'wf-n8', path:'wf-path-n7-n8', delay:3850 },
   ];
 
+  function paintPortsForPath(pathEl, color) {
+    if (!pathEl) return;
+    const d = pathEl.getAttribute('d') || '';
+    const start = d.match(/^M([\d.]+),([\d.]+)/);
+    const end = d.match(/([\d.]+),([\d.]+)\s*$/);
+    if (!start || !end) return;
+    const x1 = +start[1], y1 = +start[2], x2 = +end[1], y2 = +end[2];
+    document.querySelectorAll('#wf-svg circle').forEach(c => {
+      const cx = +c.getAttribute('cx'), cy = +c.getAttribute('cy');
+      const nearStart = Math.abs(cx - x1) < 1 && Math.abs(cy - y1) < 1;
+      const nearEnd = Math.abs(cx - x2) < 1 && Math.abs(cy - y2) < 1;
+      if (!nearStart && !nearEnd) return;
+      if (c.getAttribute('r') === '2.5') c.setAttribute('fill', color);
+      else c.setAttribute('stroke', color);
+    });
+  }
+
   seq.forEach(step => {
-    setTimeout(() => {
+    wfLater(() => {
       if (step.path) {
         const p = document.getElementById(step.path);
         if (p) {
@@ -1911,39 +1970,60 @@ function runWorkflow() {
           p.setAttribute('marker-end','url(#wfa-r)');
           p.style.strokeDasharray = '8 5';
           p.style.animation = 'wf-flow .45s linear infinite';
+          paintPortsForPath(p, '#ff6d5a');
         }
       }
       const node = document.getElementById(step.node);
       if (node) node.classList.add('wf-run');
 
-      setTimeout(() => {
-        if (node) { node.classList.remove('wf-run'); node.classList.add('wf-done'); }
-        if (step.node === 'wf-n8' && node) node.classList.add('wf-out');
+      wfLater(() => {
+        if (node) {
+          node.classList.remove('wf-run');
+          node.classList.add('wf-done');
+          if (step.node === 'wf-n8') node.classList.add('wf-current');
+        }
         if (step.path) {
           const p = document.getElementById(step.path);
           if (p) {
             p.setAttribute('stroke','#22c55e');
             p.setAttribute('marker-end','url(#wfa-g)');
             p.style.animation=''; p.style.strokeDasharray='';
+            paintPortsForPath(p, '#22c55e');
           }
         }
-      }, 550);
+      }, 500);
     }, step.delay);
   });
 
-  setTimeout(() => {
+  wfLater(() => {
     btn.disabled = false;
-    btn.innerHTML = '<svg width="11" height="11" viewBox="0 0 10 10" fill="currentColor"><path d="M2 1.5l7 3.5-7 3.5V1.5z"/></svg> Execute workflow';
-  }, 5200);
+    btn.innerHTML = '<svg width="11" height="11" viewBox="0 0 10 10" fill="currentColor" aria-hidden="true"><path d="M2 1.5l7 3.5-7 3.5V1.5z"/></svg> Execute workflow';
+  }, 4800);
 }
 
 document.getElementById('wf-exec-btn')?.addEventListener('click', runWorkflow);
 
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', drawWfConnections);
-} else {
+function bootWf() {
   drawWfConnections();
+  const imgs = [...document.querySelectorAll('#wf-canvas img')];
+  if (!imgs.length) return;
+  let left = imgs.length;
+  const done = () => { if (--left <= 0) drawWfConnections(); };
+  imgs.forEach(img => {
+    if (img.complete) done();
+    else {
+      img.addEventListener('load', done, { once:true });
+      img.addEventListener('error', done, { once:true });
+    }
+  });
 }
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', bootWf);
+} else {
+  bootWf();
+}
+window.addEventListener('load', drawWfConnections);
 window.addEventListener('resize', drawWfConnections);
 </script>
 </body>
